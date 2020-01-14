@@ -4,7 +4,8 @@
 
 #ifndef MILE_STONE_2_CLIENTHANDLER_H
 #define MILE_STONE_2_CLIENTHANDLER_H
-    class CLientHandler {
-    void handleClient(/*io stream to input, and one for output*/); // input stream
+#include <fstream>
+class CLientHandler {
+  virtual void handleClient(std::ifstream& istream, std::ofstream& ostream) = 0; // input stream
 };
 #endif //MILE_STONE_2_CLIENTHANDLER_H

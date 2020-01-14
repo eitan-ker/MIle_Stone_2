@@ -10,10 +10,11 @@
 #include "CacheManager.h";
 
 class MyTestClientHandler : public CLientHandler {
-private :
-    Solver solver;
-    CacheManager cm;
-
+ private :
+  Solver solver;
+  CacheManager cm;
+ public:
+  MyTestClientHandler(Solver s, CacheManager cache) : solver(s), cm(cache){}
 };
 
 

@@ -7,12 +7,13 @@
 
 
 #include "Server.h"
+#include "ClientHandler.h"
 
 class MySerialServer: public Server {
-    void open(int port, CLientHandler c) = 0; // open server with port num
-    void stop(); // close server
+  void open(int port, CLientHandler c) = 0; // open server with port num
+  void stop(); // close server
 // we need to implement protocol of comunication between client and server
-    void protocol();
+  void protocol();
 
 };
 
