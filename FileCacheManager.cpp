@@ -3,3 +3,6 @@
 //
 
 #include "FileCacheManager.h"
+Solver FileCacheManager::pop() {
+
+}
