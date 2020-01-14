@@ -6,13 +6,13 @@
 #define MILE_STONE_2_FILECACHEMANAGER_H
 
 #include "CacheManager.h";
-
-class FileCacheManager : public CacheManager {
-    // implement those func:
-
-    int doWeHaveSolution(); // return if there is a solution
-    Solver pop(); // pop solution to problem P
-    void save(Solver s); // save solution s to problem P
+template <typename T, typename Q>
+class FileCacheManager : public CacheManager<T,Q> {
+ public:
+  FileCacheManager()
+  int doWeHaveSolution(); // return if there is a solution
+  Solver pop(); // pop solution to problem P
+  void save(Solver s); // save solution s to problem P
 };
 
 
