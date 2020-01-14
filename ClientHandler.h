@@ -6,6 +6,7 @@
 #define MILE_STONE_2_CLIENTHANDLER_H
 #include <fstream>
 class CLientHandler {
-  virtual void handleClient(std::ifstream& istream, std::ofstream& ostream) = 0; // input stream
+public:
+  virtual void handleClient(int socket, int sol) = 0; // input stream
 };
 #endif //MILE_STONE_2_CLIENTHANDLER_H

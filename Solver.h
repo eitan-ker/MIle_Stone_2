@@ -7,7 +7,7 @@
 
 
 class Solver { // gets a problem - we decide how we want to get it(string, io...)
-    // solbe(:Problem):Solution
+    // solve(:Problem):Solution
     // different implementation for different problems
 
 };

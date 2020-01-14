@@ -9,7 +9,7 @@
 template <typename T, typename Q>
 class FileCacheManager : public CacheManager<T,Q> {
  public:
-  FileCacheManager()
+  FileCacheManager();
   int doWeHaveSolution(); // return if there is a solution
   Solver pop(); // pop solution to problem P
   void save(Solver s); // save solution s to problem P
