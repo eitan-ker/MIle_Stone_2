@@ -12,4 +12,5 @@ string StringReverser::solve(string problem) { //reverse the given string as a p
     s+=*token;
     token--;
   }
+  return s;
 }
