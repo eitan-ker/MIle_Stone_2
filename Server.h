@@ -9,8 +9,6 @@
 #include "ClientHandler.h"
 
 class Server {
-private:
-    CLientHandler c;
 public:
     virtual void open(int port, CLientHandler c) = 0; // open server with port num
     virtual void stop() = 0; // close server for the same port
