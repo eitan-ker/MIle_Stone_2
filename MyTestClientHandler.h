@@ -8,15 +8,15 @@
 #include "ClientHandler.h"
 #include "Solver.h"
 #include "CacheManager.h"
-template <typename T, typename Q>
+template <class T, class Q>
 class MyTestClientHandler : public CLientHandler {
-private :
-    Solver* solver;
-    CacheManager<T,Q>* cm;
-public:
-    void handleClient(int socket);
+ private :
+  Solver* solver;
+  CacheManager<T,Q>* cm;
+ public:
+  void handleClient(int socket);
 
-    MyTestClientHandler(Solver *s, CacheManager<T,Q>* cache) : solver(s), cm(cache) {}
+  MyTestClientHandler(Solver *s, CacheManager<T,Q>* cache) : solver(s), cm(cache) {}
 };
 
 

@@ -17,7 +17,7 @@
 using namespace std;
 
 class MySerialServer: public Server {
-public:
+ public:
   void open(int port, CLientHandler *c); // open server with port num
   // listen until accept client, than execute ClientHandler
   void stop(); // close server
