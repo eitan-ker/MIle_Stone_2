@@ -8,6 +8,7 @@
 #include <string>
 using namespace std;
 class Solver { // gets a problem - we decide how we want to get it(string, io...)
+public:
   // solve(:Problem):Solution
   // different implementation for different problems
   virtual string solve(string problem) = 0;
