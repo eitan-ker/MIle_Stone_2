@@ -9,13 +9,16 @@
 #include "Server.h"
 #include "ClientHandler.h"
 #include <iostream>
-#include <bits/socket_type.h>
+#include <sys/socket.h>
 #include <bits/socket.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <stdio.h>
+using namespace std;
 
 class MySerialServer: public Server {
-  void open(int port, CLientHandler c) = 0; // open server with port num
+public:
+  void open(int port, CLientHandler *c); // open server with port num
   // listen until accept client, than execute ClientHandler
   void stop(); // close server
 // we need to implement protocol of comunication between client and server

@@ -7,6 +7,6 @@
 #include <fstream>
 class CLientHandler {
 public:
-  virtual void handleClient(int socket, int sol) = 0; // input stream
+  virtual void handleClient(int socket) = 0; // input stream
 };
 #endif //MILE_STONE_2_CLIENTHANDLER_H
