@@ -9,12 +9,12 @@
 #include "ClientHandler.h"
 
 class Server {
-public:
-    virtual void open(int port, CLientHandler *c) = 0; // open server with port num
-    virtual void stop() = 0; // close server for the same port
+ public:
+  virtual void open(int port, CLientHandler *c) = 0; // open server with port num
+  virtual void stop() = 0; // close server for the same port
 
-    virtual void protocol() = 0 ;
-    // do we need more func?
+  virtual void protocol() = 0 ;
+  // do we need more func?
 };
 
 

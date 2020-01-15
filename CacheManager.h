@@ -10,9 +10,10 @@
 using namespace std;
 template<class T, class Q>
 class CacheManager {
-public:
-  // check if it's ok - later with the program
+ private:
   unordered_map<T,Q> problemQuery;
+ public:
+  // check if it's ok - later with the program
   virtual unordered_map<T,Q>& getProblemQueryMap() {
     return this->problemQuery;
   }

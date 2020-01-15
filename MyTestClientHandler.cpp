@@ -7,32 +7,32 @@ using namespace std;
 #include <cstring>
 #include "MyTestClientHandler.h"
 
-template<typename T, typename Q>
+template<class T, class Q>
 void MyTestClientHandler<T, Q>::handleClient(int socket) {
-    string next_buff = "";
-    int sim_index = 0;
-    int endFlag = 0, solFlag = 0;
-    char* solution = "";
-    while (endFlag != 1) {
-        //reading from client
-        char buffer[1024] = {0};
-        string value_buf = next_buff;
-        int valread = read(socket, buffer, 1024);
-        if (!strcmp(buffer, "END")) {
-            endFlag = 1;
-        } else {
-            int i = 0;
-            string bufferString = buffer;
-            // send 1024 bites of buffer - info required is 328 bites
-            solFlag = this->cm.doWeHaveSolution(value_buf);
-            if (solFlag) { // if we have a solution in cache
-                this->solver = this->cm.pop(value_buf); // we get the solution from cache
-            } else {
-                // we don;t have a solution
-                solution = this->solver->solve(value_buf); // solution have the solution string
-                // solve with Solver
-                this->cm.save(value_buf ,solution); // save the probkem and solution
-            }
+  string next_buff = "";
+  int sim_index = 0;
+  int endFlag = 0, solFlag = 0;
+  char* solution = "";
+  while (endFlag != 1) {
+    //reading from client
+    char buffer[1024] = {0};
+    string value_buf = next_buff;
+    int valread = read(socket, buffer, 1024);
+    if (!strcmp(buffer, "END")) {
+      endFlag = 1;
+    } else {
+      int i = 0;
+      string bufferString = buffer;
+      // send 1024 bites of buffer - info required is 328 bites
+      solFlag = this->cm.doWeHaveSolution(value_buf);
+      if (solFlag) { // if we have a solution in cache
+        this->solver = this->cm.pop(value_buf); // we get the solution from cache
+      } else {
+        // we don;t have a solution
+        solution = this->solver->solve(value_buf); // solution have the solution string
+        // solve with Solver
+        this->cm.save(value_buf ,solution); // save the probkem and solution
+      }
 //            for (i = 0; i < valread; i++) {
 //                if ((bufferString[i] == ',') || (buffer[i] == '\n')) {
 //                    sim_index++;
@@ -62,12 +62,12 @@ void MyTestClientHandler<T, Q>::handleClient(int socket) {
 //                // concatenate value
 //                value_buf = value_buf + bufferString[i];
 //            }
-        }
-
     }
-    //ofstream outputfile{"output.txt"};
-    // reading line by line
-    // for each line:
-    // search solution in cache
-    // else(not found) send to resolver]
+
+  }
+  //ofstream outputfile{"output.txt"};
+  // reading line by line
+  // for each line:
+  // search solution in cache
+  // else(not found) send to resolver]
 }
