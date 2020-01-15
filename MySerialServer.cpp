@@ -4,8 +4,9 @@
 
 
 #include "MySerialServer.h"
-void MySerialServer::open(int port, CLientHandler c) {
-    while(1) {
+
+void MySerialServer::open(int port, CLientHandler *c) {
+    while (1) {
         //create socket
         int socketfd = socket(AF_INET, SOCK_STREAM, 0);
         if (socketfd == -1) {
@@ -44,6 +45,13 @@ void MySerialServer::open(int port, CLientHandler c) {
             std::cerr << "Error accepting client" << std::endl;
             //  return -4;
         }
-        c.handleClient(client_socket, 0);
+        (*c).handleClient(client_socket);
     }
 }
+void MySerialServer::stop() {
+    cout << "stop\n" << endl;
+}
+void MySerialServer::protocol() {
+    cout << "protocol\n" << endl;
+}
+
