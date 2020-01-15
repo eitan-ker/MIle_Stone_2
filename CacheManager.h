@@ -7,13 +7,16 @@
 
 #include <unordered_map>
 #include "Solver.h"
-template<typename T, typename Q>
+using namespace std;
+template<class T, class Q>
 class CacheManager {
   // check if it's ok - later with the program
-
-  std::unordered_map<T,Q> problemQuery;
-  int doWeHaveSolution() = 0; // return if there is a solution
-  Solver pop() = 0; // pop solution to problem P
-  void save(Solver s) = 0; // save solution s to problem P
+  unordered_map<T,Q> problemQuery;
+  virtual unordered_map<T,Q>& getProblemQueryMap() {
+    return this->problemQuery;
+  }
+  virtual int doWeHaveSolution(T problem) = 0; // return if there is a solution
+  virtual Q pop(T problem) = 0; // pop solution to problem P
+  virtual void save(T problem, Q solution) = 0; // save solution s to problem P
 };
 #endif //MILE_STONE_2_CACHEMANAGER_H

@@ -6,13 +6,16 @@
 #define MILE_STONE_2_FILECACHEMANAGER_H
 
 #include "CacheManager.h";
-template <typename T, typename Q>
+#include "Solver.h"
+using namespace std;
+template <class T, class Q>
 class FileCacheManager : public CacheManager<T,Q> {
  public:
   FileCacheManager();
-  int doWeHaveSolution(); // return if there is a solution
-  Solver pop(); // pop solution to problem P
-  void save(Solver s); // save solution s to problem P
+  int doWeHaveSolution(T problem); // return if there is a solution
+  Q pop(T problem); // pop solution to problem P
+  void save(T problem, Q solution); // save solution s to problem P
+  unordered_map<T, Q> &getProblemQueryMap();
 };
 
 
