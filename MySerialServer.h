@@ -32,7 +32,7 @@ public:
 
     void open(int port, CLientHandler *c); // open server with port num
 // listen until accept client, than execute ClientHandler
-    void executeServer(int port, CLientHandler *c);
+    void executeServer(CLientHandler *c, sockaddr_in address, int socketfd);
 
     void stop(); // close server
 // we need to implement protocol of comunication between client and server

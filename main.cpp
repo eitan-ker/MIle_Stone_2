@@ -1,8 +1,6 @@
 //
 // Created by eizzker on 15/01/2020.
 //
-#include <stdio.h>
-#include <thread>
 #include "MySerialServer.h"
 #include "CacheManager.h"
 #include "FileCacheManager.h"
@@ -15,6 +13,13 @@ int main() {
   CacheManager<string, string>* cacheFile = new FileCacheManager<string, string>();
   Solver* solver = new StringReverser();
   CLientHandler *c = new MyTestClientHandler<string,string>(solver, cacheFile);
-  s->executeServer(8520, c);
-
+  s->open(8520, c);
+    int sleeptime = 120000;
+    try {
+        std::this_thread::sleep_for(std::chrono::milliseconds(sleeptime));
+    }
+    catch (...) {
+        throw "there was a problem with sleep";
+    }
+return 0;
 }

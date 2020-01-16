@@ -17,25 +17,27 @@ class MyTestClientHandler : public CLientHandler {
   CacheManager<T,Q>* cm;
  public:
   void handleClient(int socket) {
-      string next_buff = "";
       int sim_index = 0;
       int endFlag = 0, solFlag = 0, is_sent = 0;
+      char* splitBuf;
       string solution = "";
+      //reading from client
+      char buffer[1024] = {0};
+      int valread = read(socket, buffer, 1024);
+      splitBuf = strtok(buffer, "\n");
+      cout << splitBuf << endl;
       while (endFlag != 1) {
-          //reading from client
-          char buffer[1024] = {0};
-          string value_buf = next_buff;
-          int valread = read(socket, buffer, 1024);
-          if (!strcmp(buffer, "END")) {
+
+          if (!strcmp(splitBuf, "END")) {
               // stop communication
               endFlag = 1;
           } else {
               int i = 0;
               string bufferString = buffer;
               // send 1024 bites of buffer - info required is 328 bites
-              solFlag = this->cm->doWeHaveSolution(value_buf);
+              solFlag = this->cm->doWeHaveSolution(splitBuf);
               if (solFlag) { // if we have a solution in cache
-                  solution = this->cm->pop(value_buf); // we get the solution from cache
+                  solution = this->cm->pop(splitBuf); // we get the solution from cache
 
                             // send solution to client
                   while(!solution.empty()) {
@@ -48,20 +50,19 @@ class MyTestClientHandler : public CLientHandler {
 
               } else {
                   // we don't have a solution
-                  solution = this->solver->solve(value_buf); // solution have the solution string
+                  solution = this->solver->solve(splitBuf); // solution have the solution string
 
                              // send solution to client
-                  while(!solution.empty()) {
                       is_sent = send(socket, solution.c_str(), strlen(solution.c_str()), 0);
-                  }
                   if (is_sent == -1) {
                       std::cout << "Error sending message" << std::endl;
                   }
 
 
                   // solve with Solver
-                  this->cm->save(value_buf ,solution); // save the probkem and solution
+                  this->cm->save(splitBuf ,solution); // save the probkem and solution
               }
+              splitBuf = strtok(NULL, "\n");
           }
 
       }
