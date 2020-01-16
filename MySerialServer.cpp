@@ -6,13 +6,12 @@
 #include "MySerialServer.h"
 
 void MySerialServer::open(int port, CLientHandler *c) {
-  while (1) {
-    //create socket
+    //  while (1) {
     int socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (socketfd == -1) {
-      //error
-      std::cerr << "Could not create a socket" << std::endl;
-      //   return -1;
+        //error
+        std::cerr << "Could not create a socket" << std::endl;
+        //   return -1;
     }
 
     //bind socket to IP address
@@ -26,32 +25,46 @@ void MySerialServer::open(int port, CLientHandler *c) {
 
     //the actual bind command
     if (bind(socketfd, (struct sockaddr *) &address, sizeof(address)) == -1) {
-      std::cerr << "Could not bind the socket to an IP" << std::endl;
-      // return -2;
+        std::cerr << "Could not bind the socket to an IP" << std::endl;
+        // return -2;
     }
 
     //making socket listen to the port
     if (listen(socketfd, 5) == -1) { //can also set to SOMAXCON (max connections)
-      std::cerr << "Error during listening command" << std::endl;
-      //    return -3;
+        std::cerr << "Error during listening command" << std::endl;
+        //    return -3;
     } else {
-      std::cout << "Server is now listening ..." << std::endl;
+        std::cout << "Server is now listening ..." << std::endl;
     }
 
-    // accepting a client
-    int client_socket = accept(socketfd, (struct sockaddr *) &address,
-                               (socklen_t *) &address);
-    if (client_socket == -1) {
-      std::cerr << "Error accepting client" << std::endl;
-      //  return -4;
+    thread ser(&MySerialServer::executeServer, this, c, address, socketfd);
+    ser.detach();
+    //}
+}
+
+void MySerialServer::executeServer(CLientHandler *c, sockaddr_in address, int socketfd) {
+    //create socket
+
+    while (1) {
+        // accepting a client
+        int client_socket = accept(socketfd, (struct sockaddr *) &address,
+                                   (socklen_t *) &address);
+        if (client_socket == -1) {
+            std::cerr << "Error accepting client" << std::endl;
+            //  return -4;
+        }
+        std::cout << "client is now connected" << std::endl;
+
+        (*c).handleClient(client_socket);
     }
-    (*c).handleClient(client_socket);
-  }
 }
+
+
 void MySerialServer::stop() {
-  cout << "stop\n" << endl;
+    cout << "stop\n" << endl;
 }
+
 void MySerialServer::protocol() {
-  cout << "protocol\n" << endl;
+    cout << "protocol\n" << endl;
 }
 

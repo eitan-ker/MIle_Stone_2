@@ -11,6 +11,7 @@ string StringReverser::solve(string problem) { //reverse the given string as a p
   while(i >= 0) {
     s+=*token;
     token--;
+    i--;
   }
   return s;
 }

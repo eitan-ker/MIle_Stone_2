@@ -14,15 +14,29 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <stdio.h>
+#include <stdio.h>
+#include <thread>
+#include <sys/socket.h>
+#include <string>
+#include <iostream>
+#include <unistd.h>
+#include <netinet/in.h>
+#include <cstring>
+#include <arpa/inet.h>
+
+
 using namespace std;
 
-class MySerialServer: public Server {
- public:
-  void open(int port, CLientHandler *c); // open server with port num
-  // listen until accept client, than execute ClientHandler
-  void stop(); // close server
+class MySerialServer : public Server {
+public:
+
+    void open(int port, CLientHandler *c); // open server with port num
+// listen until accept client, than execute ClientHandler
+    void executeServer(CLientHandler *c, sockaddr_in address, int socketfd);
+
+    void stop(); // close server
 // we need to implement protocol of comunication between client and server
-  void protocol();
+    void protocol();
 
 };
 
