@@ -45,6 +45,7 @@ class FileCacheManager : public CacheManager<T,Q> {
         }
         myfile1>>obj5;
         myfile1.close();
+        this->getProblemQueryMap().insert({problem,obj5});
       } catch (const char *e) {
         cout << e << endl;
       }
