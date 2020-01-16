@@ -13,13 +13,24 @@ class FileCacheManager : public CacheManager<T,Q> {
  public:
   FileCacheManager<T,Q>(){};
   int doWeHaveSolution(T problem) {
-    typename unordered_map<T,Q> ::iterator it = this->getProblemQueryMap().begin();
-    if (it != this->getProblemQueryMap().end()){
+    typename unordered_map<T, Q>::iterator it = this->getProblemQueryMap().begin();
+    if (it != this->getProblemQueryMap().end()) {
       return 1;
     } else {
-      return 0;
-    }
-  } // return if there is a solution
+      try {
+        ifstream myfile1{problem + ".txt", ios::binary};
+        if (!myfile1) {
+          return 0;
+        }
+        if (!myfile1.is_open()) {
+          return 0;
+        }
+        return 1;
+      } catch(...) {
+
+      }
+    } // return if there is a solution
+  }
   Q pop(T problem) {
     if ( this->getProblemQueryMap().find(problem) == this->getProblemQueryMap().end() ) {
       // not found in map, searching file system
@@ -34,13 +45,13 @@ class FileCacheManager : public CacheManager<T,Q> {
         }
         myfile1.read((char *)&obj5, sizeof(obj5));
         myfile1.close();
-        this->getProblemQueryMap[problem] = obj5;
+        this->getProblemQueryMap()[problem] = obj5;
       } catch (const char *e) {
         cout << e << endl;
       }
       return obj5;
     } else {
-      auto it = this->getProblemQueryMap.find(problem);
+      auto it = this->getProblemQueryMap().find(problem);
       return it->second;
     }
   } // pop solution to problem P
