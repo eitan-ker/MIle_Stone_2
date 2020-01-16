@@ -18,7 +18,7 @@ class FileCacheManager : public CacheManager<T,Q> {
       return 1;
     } else {
       try {
-        ifstream myfile1{problem + ".txt", ios::binary};
+        ifstream myfile1{problem + ".txt", ios::out};
         if (!myfile1) {
           return 0;
         }
@@ -36,16 +36,15 @@ class FileCacheManager : public CacheManager<T,Q> {
       // not found in map, searching file system
       Q obj5;
       try {
-        ifstream myfile1{problem + ".txt", ios::binary};
+        ifstream myfile1{problem + ".txt", ios::in};
         if (!myfile1) {
           throw "an error";
         }
         if (!myfile1.is_open()) {
           throw "cant open file";
         }
-        myfile1.read((char *)&obj5, sizeof(obj5));
+        myfile1>>obj5;
         myfile1.close();
-        this->getProblemQueryMap()[problem] = obj5;
       } catch (const char *e) {
         cout << e << endl;
       }
@@ -56,11 +55,11 @@ class FileCacheManager : public CacheManager<T,Q> {
     }
   } // pop solution to problem P
   void save(T problem, Q solution) {
-    this->getProblemQueryMap().at(problem); // save solution s to problem P in map
+    this->getProblemQueryMap()[problem] = solution; // save solution s to problem P in map
     try {
-      ofstream myfile{problem + ".txt", ios::binary};
+      ofstream myfile{problem + ".txt", ios::out};
       if (myfile.is_open()) {
-        myfile.write((char *)&solution, sizeof(solution));
+        myfile<<solution;
       }
       myfile.close();
     } catch (const char *e) {
