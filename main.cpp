@@ -9,27 +9,12 @@
 #include "StringReverser.h"
 #include "MyTestClientHandler.h"
 using namespace std;
-namespace boot {
-    class Main {
-    public:
-        int main() {
-            MySerialServer* s = new MySerialServer();
-            CacheManager<string, string>* cacheFile = new FileCacheManager<string, string>();
-            Solver* solver = new StringReverser();
-            CLientHandler *c = new MyTestClientHandler<string,string>(solver, cacheFile);
 
-            s->open(8520, c);
-
-        }
-    };
-}
 int main() {
-    boot::Main *temp;
-    temp->main();
-////  MySerialServer* s = new MySerialServer();
-////  CacheManager<string, string>* cacheFile = new FileCacheManager<string, string>();
-////  Solver* solver = new StringReverser();
-////  CLientHandler *c = new MyTestClientHandler<string,string>(solver, cacheFile);
-////  s->open(8520, c);
-////
+  MySerialServer* s = new MySerialServer();
+  CacheManager<string, string>* cacheFile = new FileCacheManager<string, string>();
+  Solver* solver = new StringReverser();
+  CLientHandler *c = new MyTestClientHandler<string,string>(solver, cacheFile);
+  s->executeServer(8520, c);
+
 }
