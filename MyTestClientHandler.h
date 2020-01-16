@@ -25,7 +25,6 @@ class MyTestClientHandler : public CLientHandler {
       char buffer[1024] = {0};
       int valread = read(socket, buffer, 1024);
       splitBuf = strtok(buffer, "\n");
-      cout << splitBuf << endl;
       while (endFlag != 1) {
 
           if (!strcmp(splitBuf, "END")) {
@@ -38,19 +37,19 @@ class MyTestClientHandler : public CLientHandler {
               solFlag = this->cm->doWeHaveSolution(splitBuf);
               if (solFlag) { // if we have a solution in cache
                   solution = this->cm->pop(splitBuf); // we get the solution from cache
+                  cout << solution << endl;
 
                             // send solution to client
-                  while(!solution.empty()) {
                       is_sent = send(socket, solution.c_str(), strlen(solution.c_str()), 0);
-                  }
+
                   if (is_sent == -1) {
                       std::cout << "Error sending message" << std::endl;
                   }
 
-
               } else {
                   // we don't have a solution
                   solution = this->solver->solve(splitBuf); // solution have the solution string
+                  cout << solution << endl;
 
                              // send solution to client
                       is_sent = send(socket, solution.c_str(), strlen(solution.c_str()), 0);
