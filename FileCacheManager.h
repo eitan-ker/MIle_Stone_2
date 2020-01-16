@@ -21,11 +21,41 @@ class FileCacheManager : public CacheManager<T,Q> {
     }
   } // return if there is a solution
   Q pop(T problem) {
-    return this->getProblemQueryMap()[problem];
+    if ( this->getProblemQueryMap().find(problem) == this->getProblemQueryMap().end() ) {
+      // not found in map, searching file system
+      Q obj5;
+      try {
+        ifstream myfile1{problem + ".txt", ios::binary};
+        if (!myfile1) {
+          throw "an error";
+        }
+        if (!myfile1.is_open()) {
+          throw "cant open file";
+        }
+        myfile1.read((char *)&obj5, sizeof(obj5));
+        myfile1.close();
+        this->getProblemQueryMap[problem] = obj5;
+      } catch (const char *e) {
+        cout << e << endl;
+      }
+      return obj5;
+    } else {
+      auto it = this->getProblemQueryMap.find(problem);
+      return it->second;
+    }
   } // pop solution to problem P
   void save(T problem, Q solution) {
-    this->getProblemQueryMap()[problem] = solution;
-  } // save solution s to problem P
+    this->getProblemQueryMap().at(problem); // save solution s to problem P in map
+    try {
+      ofstream myfile{problem + ".txt", ios::binary};
+      if (myfile.is_open()) {
+        myfile.write((char *)&solution, sizeof(solution));
+      }
+      myfile.close();
+    } catch (const char *e) {
+      throw "error oppening file";
+    }
+  }
 };
 
 
