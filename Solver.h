@@ -7,12 +7,10 @@
 
 #include <string>
 using namespace std;
+template<class T, class Q>
 class Solver { // gets a problem - we decide how we want to get it(string, io...)
 public:
-  // solve(:Problem):Solution
-  // different implementation for different problems
-  virtual string solve(string problem) = 0;
-
+  virtual Q solve(T problem) = 0;
 };
 
 
