@@ -13,7 +13,7 @@ private :
     State* _cameFrom; //the state we came from to this state
 public:
     State(T state, double cost) {
-        this->_cost = 0;
+        this->_cost = cost;
         this->_state = state;
         this->_cameFrom = nullptr;
     };

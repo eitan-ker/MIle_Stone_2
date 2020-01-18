@@ -8,6 +8,7 @@
 #include "Solver.h"
 #include "Searchable.h"
 #include "MatrixConverter.h"
+
 template<class T,class Q>
 class OA : public Solver<T,Q> { // gets a problem - we decide how we want to get it(string, io...)
 private:
@@ -17,6 +18,7 @@ public:
     Q solve(T problem) {
        // State<T> state = new State<string>();
         Searcheable<vector<vector<State<T>>>>* searcheable = new MatrixConverter<vector<vector<State<T>>>>(problem);
+  cout << "endl" << endl;
     }
     OA(Searcher<T,Q>* searcher) : _searcher(searcher) {}
 };
