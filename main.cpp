@@ -6,12 +6,15 @@
 #include "FileCacheManager.h"
 #include "StringReverser.h"
 #include "MyTestClientHandler.h"
+#include "MyClientHandler.h"
+#include "OA.h"
+
 using namespace std;
 int main() {
   MySerialServer* s = new MySerialServer();
   CacheManager<string, string>* cacheFile = new FileCacheManager<string, string>();
-  Solver<string,string>* solver = new StringReverser<string,string>();
-  CLientHandler *c = new MyTestClientHandler<string,string>(solver, cacheFile);
+  Solver<string,string>* solver = new OA<string,string>();
+  CLientHandler *c = new MyClientHandler<string,string>(solver, cacheFile);
   s->open(8520, c);
     int sleeptime = 120000;
     try {

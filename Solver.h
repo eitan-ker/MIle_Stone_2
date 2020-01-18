@@ -10,7 +10,7 @@ using namespace std;
 template<class T, class Q>
 class Solver { // gets a problem - we decide how we want to get it(string, io...)
 public:
-  virtual Q solve(T problem) = 0;
+    virtual Q solve(T problem) = 0;
 };
 
 
