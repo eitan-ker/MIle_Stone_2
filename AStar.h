@@ -9,13 +9,13 @@
 #include "Searcher.h"
 #include "Searchable.h"
 template <class T, class Q>
-class AStar : Searcher<T,Q> {
- public:
-  Q search(Searcheable<T> searcheable) {
-    State<T> initialState = searcheable.getInitialState();
+class AStar : public Searcher<T,Q> {
+public:
+    Q search(Searcheable<T> searcheable) {
+        State<T> initialState = searcheable.getInitialState();
 
 
-  }
-  AStar(){};
+    }
+    AStar(){};
 };
 #endif //MILE_STONE2__ASTAR_H_

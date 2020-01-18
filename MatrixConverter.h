@@ -13,7 +13,7 @@ template<class T>
 
 class MatrixConverter : public Searcheable<T> {
 private:
-    vector<vector<State<int>>> _matrix;
+    vector<vector<State<T>*>> _matrix;
 public :
     // make matrix
     int countLength(string problem) {
@@ -35,7 +35,7 @@ public :
         return counter;
 }
 
-    vector<vector<State<T>>> initializeArray(string matr, int lineLength, vector <vector<State<int>>> matrix) {
+    vector<vector<State<T>*>> initializeArray(string matr, int lineLength, vector<vector<State<T>*>> matrix) {
         int i = 0, r = 0, c = 0, matrLength = matr.length();
         string line = "";
         vector<int> stringValues(lineLength);
@@ -51,8 +51,9 @@ public :
                      cc << c;
                     string rs = rr.str();
                     string cs = cc.str();
-                    string state = rs + cs;
-                    matrix[r][c] = new State<T>(state, stringValues[c]);
+                    string state = rs + "," + cs;
+                    //State<string>* pos = new State<string>(state, stringValues[c]);
+                    matrix[r][c] = new State<string>(state, stringValues[c]);
                 }
                 r++;
                 line = "";
@@ -84,8 +85,8 @@ public :
 
     MatrixConverter(string problem) {
         int lineLength = countLength(problem);
-        vector<vector<T>> matrix(lineLength, vector<int>(lineLength));
-        this->_matrix = initializeArray(problem, lineLength, matrix);
+        _matrix.resize(lineLength, vector<State<T>*>(lineLength));
+        this->_matrix = initializeArray(problem, lineLength, _matrix);
     }
 
     State<T> getInitialState() {

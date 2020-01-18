@@ -8,6 +8,8 @@ using namespace std;
 template<class T,class Q>
 class Searcher { // gets a problem - we decide how we want to get it(string, io...)
  public:
-  virtual Q search(T searchable) = 0;
+  virtual Q search(T searchable) {
+
+  }
 };
 #endif //MILE_STONE2__SEARCHER_H_
