@@ -9,12 +9,13 @@
 #include "Searchable.h"
 #include "Solver.h"
 #include "State.h"
+#include "Point.h"
 
 template<class T>
 
 class MatrixConverter : public Searcheable<T> {
 private:
-    vector<vector<State<string> *>> _matrix;
+    vector<vector<State<Point> *>> _matrix;
 public :
     // make matrix
     int countLength(string problem) {
@@ -46,7 +47,7 @@ public :
             }
             if (matr[i] == '\n') {
                 stringValues = onlyValues(line + ",", lineLength);
-                vector<State<string> *> vec;
+                vector<State<Point> *> vec;
                 for (c = 0; c < lineLength; c++) {
                     stringstream rr, cc;
                     rr << r;
@@ -54,7 +55,8 @@ public :
                     string rs = rr.str();
                     string cs = cc.str();
                     string state = rs + "," + cs;
-                    State<string> *s = new State<string>(state, stringValues[c]);
+                    Point* p = new Point(r,c);
+                    State<Point> *s = new State<Point>(p, stringValues[c]);
                     vec.insert(vec.end(), s);
                 }
                 _matrix.push_back(vec);

@@ -13,7 +13,7 @@ using namespace std;
 int main() {
   MySerialServer* s = new MySerialServer();
   CacheManager<string, string>* cacheFile = new FileCacheManager<string, string>();
-  Solver<string,string>* solver = new OA<string,string>(    new AStar<string, string>());
+  Solver<string,string>* solver = new OA<string,string>(/*new AStar<string, string>()*/);
   CLientHandler *c = new MyClientHandler<string,string>(solver, cacheFile);
   s->open(8520, c);
     int sleeptime = 120000;
