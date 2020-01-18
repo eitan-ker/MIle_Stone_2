@@ -13,7 +13,7 @@
 template <class T, class Q>
 class MyTestClientHandler : public CLientHandler {
  private :
-  Solver* solver;
+  Solver<T,Q>* solver;
   CacheManager<T,Q>* cm;
  public:
   void handleClient(int socket) {
@@ -67,7 +67,7 @@ class MyTestClientHandler : public CLientHandler {
       }
   }
 
-  MyTestClientHandler(Solver *s, CacheManager<T,Q>* cache) : solver(s), cm(cache) {}
+  MyTestClientHandler(Solver<T,Q> *s, CacheManager<T,Q>* cache) : solver(s), cm(cache) {}
 };
 
 
