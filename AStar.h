@@ -33,6 +33,7 @@ public:
         typename std::vector<T>::iterator it1 = openlist.begin()+i;
         int decideDirection = decideWhereICameFrom(*it1);
         WriteDirection(decideDirection);
+        this->ShortestPath+=",";
         vector<T> successors = searcheable.getAllPossibleStates(*it1); // generate square's successors
         for (typename std::vector<T>::iterator it = successors.begin() ; it != successors.end(); ++it) {
           (*it).setCameFrom(*it1);
@@ -96,16 +97,16 @@ public:
     void WriteDirection(int decideDirection) {
       switch(decideDirection) {
         case 1 :
-          this->ShortestPath += "left,";
+          this->ShortestPath += "left";
           break;
         case 2 :
-          this->ShortestPath += "right,";
+          this->ShortestPath += "right";
           break;
         case 3 :
-          this->ShortestPath += "down,";
+          this->ShortestPath += "down";
           break;
         case 4 :
-          this->ShortestPath += "up,";
+          this->ShortestPath += "up";
           break;
         default:
           break;
