@@ -9,7 +9,7 @@
 #include <vector>
 #include "Searcher.h"
 #include "Searchable.h"
-template <class T, class Q>
+template <class T, class Q, class P>
 class AStar : public Searcher<T,Q> {
  private:
   vector<T> openlist;
@@ -19,7 +19,7 @@ public:
   AStar(){
     this->totalCost = 0;// initialize total cost as zero
   };
-    Q search(Searcheable<T>& searcheable) {
+    Q search(Searcheable<T,P>& searcheable) {
       T square;
       int i = 0, currentSquare = 0;
       openlist.push_back(searcheable.getInitialState());
@@ -66,10 +66,10 @@ public:
   double calculateG(State<T>& state) {
     return state.getCost();
   }
-  double calculateF(Searcheable<T>& searcheable, State<T>& state) {
+  double calculateF(Searcheable<T,P>& searcheable, State<T>& state) {
     return calculateG(state) + calculateH(searcheable,state);
   }
-  double calculateH(Searcheable<T>& searcheable,State<T>& state) { // calculate H using Manhattan distance
+  double calculateH(Searcheable<T,P>& searcheable,State<T>& state) { // calculate H using Manhattan distance
     return abs(state.getState().getRow() - searcheable.getGoalState().getState().getRow()) +
         abs(state.getState().getCol() - searcheable.getGoalState().getState().getCol());
   }
