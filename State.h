@@ -18,16 +18,20 @@ public:
         this->_state = state;
         this->_cameFrom = nullptr;
     };
-
-    State(){};
-
-
+    void setCameFrom(State parent) {
+      this->*_cameFrom = parent;
+    }
+    double getCost() {
+      return this->_cost;
+    }
+    void setCost(double val) {
+      this->_cost = val;
+    }
+    T getState() {
+      return this->_state;
+    }
     bool Equals(State<T> s) {
         return this->_state.Eqals(s._state);
-    }
-
-    bool isValid(State<T> s) {
-
     }
 };
 
