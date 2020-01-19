@@ -12,7 +12,8 @@ template <class T, class Q>
 class AStar : public Searcher<T,Q> {
 public:
     Q search(Searcheable<T> searcheable) {
-        State<T> initialState = searcheable.getInitialState();
+        cout << "yay" << endl;
+        //State<T> initialState = searcheable.getInitialState();
 
 
     }
