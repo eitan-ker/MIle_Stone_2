@@ -8,7 +8,7 @@ using namespace std;
 template<class T,class Q>
 class Searcher { // gets a problem - we decide how we want to get it(string, io...)
  public:
-  virtual Q search(T searchable) {
+  virtual Q search(T& searchable) {
 
   }
 };

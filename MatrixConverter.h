@@ -16,6 +16,8 @@ template<class T>
 class MatrixConverter : public Searcheable<T> {
 private:
     vector<vector<State<Point> *>> _matrix;
+    State<Point>* initalState;
+    State<Point>* goalState;
 public :
     // make matrix
     int countLength(string problem) {
@@ -91,13 +93,13 @@ public :
         initializeArray(problem, lineLength);
     }
 
-    State<T> getInitialState() {
+    State<T>& getInitialState() {
     }
 
-    bool isGoalState(State<T> state) {
+    bool isGoalState(State<T>& state) {
     }
 
-    vector<State<T>> getAllPossibleStates(State<T> state) {
+    vector<State<T>> getAllPossibleStates(State<T>& state) {
     }
 };
 
