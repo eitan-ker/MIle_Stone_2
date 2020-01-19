@@ -16,11 +16,11 @@
 #include "CacheManager.h"
 
 
-template <class T, class Q>
+template <class T, class Q, class P>
 
 class MyClientHandler : public CLientHandler {
 private :
-    Solver<T, Q> *solver;
+    Solver<T, Q,P> *solver;
     CacheManager<T, Q> *cm;
 public:
     void handleClient(int socket) {
@@ -76,7 +76,7 @@ public:
         }
     }
 
-    MyClientHandler(Solver<T,Q> *s, CacheManager<T, Q> *cache) : solver(s), cm(cache) {}
+    MyClientHandler(Solver<T,Q,P> *s, CacheManager<T, Q> *cache) : solver(s), cm(cache) {}
 
     int countLineLength(string line) {
         std::string s = line;

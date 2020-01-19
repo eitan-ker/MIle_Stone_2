@@ -18,9 +18,6 @@ double Point::getCol() {
 }
 
 bool Point::Eqals(Point p) {
-    if ((this->row == p.getRow()) && (this->col == p.getCol())) {
-        return true;
-    } else {
-        return false;
-    }
+    return (this->row == p.getRow()) && (this->col == p.getCol());
+
 }
