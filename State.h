@@ -33,6 +33,9 @@ public:
     bool Equals(State<T> s) {
         return this->_state.Eqals(s._state);
     }
+    State<T>*& getCameFrom() {
+      return this->_cameFrom;
+    }
 };
 
 #endif //MILE_STONE2__STATE_H_
