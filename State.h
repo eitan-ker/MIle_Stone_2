@@ -31,7 +31,7 @@ public:
       return this->_state;
     }
     bool Equals(State<T> s) {
-        return this->_state.Eqals(s._state);
+        return this->_state.Eqals(s.getState());
     }
     State<T>*& getCameFrom() {
       return this->_cameFrom;

@@ -11,13 +11,13 @@
 #include "State.h"
 #include "Point.h"
 
-template<class T>
+template<class T, class P>
 
-class MatrixConverter : public Searcheable<T> {
+class MatrixConverter : public Searcheable<T, P> {
 private:
     vector<vector<State<Point> *>> _matrix;
-    State<Point>* initalState;
-    State<Point>* goalState;
+    State<Point> *initalState;
+    State<Point> *goalState;
 public :
     // make matrix
     int countLength(string problem) {
@@ -43,28 +43,43 @@ public :
         int i = 0, j = 0, counter = 0, r = 0, c = 0, matrLength = matr.length();
         string line = "";
         vector<int> stringValues(lineLength);
+        // intial state and goal state vector
+        vector<int> states(2);
+        // lines
         for (i = 0; i < matrLength; i++) {
-            if (r == lineLength) {
+            if (r == lineLength + 2) {
                 break;
             }
             if (matr[i] == '\n') {
-                stringValues = onlyValues(line + ",", lineLength);
-                vector<State<Point> *> vec;
-                for (c = 0; c < lineLength; c++) {
-                    stringstream rr, cc;
-                    rr << r;
-                    cc << c;
-                    string rs = rr.str();
-                    string cs = cc.str();
-                    string state = rs + "," + cs;
-                    Point* p = new Point(r,c);
-                    State<Point> *s = new State<Point>(p, stringValues[c]);
-                    vec.insert(vec.end(), s);
+                // if we initial matrix
+                if (r < lineLength) {
+                    stringValues = onlyValues(line + ",", lineLength);
+                    vector<State<Point> *> vec;
+                    // columns
+                    for (c = 0; c < lineLength; c++) {
+                        Point *p = new Point(r, c);
+                        State<Point> *s = new State<Point>(p, stringValues[c]);
+                        vec.insert(vec.end(), s);
+                    }
+                    _matrix.push_back(vec);
+                    r++;
+                    line = "";
+                    continue;
+                } else {
+                    states = onlyValues(line + ",", 2);
+                    int y = states.back();
+                    states.pop_back();
+                    int x = states.back();
+                    states.pop_back();
+                    if (r == lineLength) {
+                        this->initalState = _matrix[x][y];
+                    } else {
+                        this->goalState = _matrix[x][y];
+                    }
+                    r++;
+                    line = "";
+                    continue;
                 }
-                _matrix.push_back(vec);
-                r++;
-                line = "";
-                continue;
             }
             line = line + matr[i];
         }
@@ -93,13 +108,33 @@ public :
         initializeArray(problem, lineLength);
     }
 
-    State<T>& getInitialState() {
+    State<P> *getInitialState() {
+        return this->initalState;
     }
 
-    bool isGoalState(State<T>& state) {
+    bool isGoalState(State<P> state) {
+        return state.Equals(this->goalState);
     }
 
-    vector<State<T>> getAllPossibleStates(State<T>& state) {
+    vector<State<P>> getAllPossibleStates(State<P> state) {
+        int leftFlag = 0, rightFlag = 0, upFlag = 0, downFlag = 0;
+        vector<State<P>> possibleStates;
+        double positionRow = state.getState().getRow();
+        double positionCol = state.getState().getCol();
+        int matrixSize = _matrix.size();
+        if (positionRow != 0) {
+            possibleStates.push_back(_matrix[positionRow - 1][positionCol]);
+        }
+        if (positionRow != matrixSize - 1) {
+            possibleStates.push_back(_matrix[positionRow + 1][positionCol]);
+        }
+        if (positionCol != 0) {
+            possibleStates.push_back(_matrix[positionRow][positionCol - 1]);
+        }
+        if (positionCol != matrixSize - 1) {
+            possibleStates.push_back(_matrix[positionRow][positionCol + 1]);
+        }
+        return possibleStates;
     }
 };
 

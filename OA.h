@@ -9,15 +9,15 @@
 #include "Searchable.h"
 #include "MatrixConverter.h"
 
-template<class T,class Q>
-class OA : public Solver<T,Q> { // gets a problem - we decide how we want to get it(string, io...)
+template<class T,class Q, class P>
+class OA : public Solver<T,Q,P> { // gets a problem - we decide how we want to get it(string, io...)
 private:
     //Searcheable<T>* _searchable;
    // Searcher<T,Q>* _searcher;
 public:
     Q solve(T problem) {
         // State<T> state = new State<string>();
-        Searcheable<T>* searcheable = new MatrixConverter<T>(problem);
+        Searcheable<T,P>* searcheable = new MatrixConverter<T,P>(problem);
         cout << "endl" << endl;
     }
   //  OA(Searcher<T,Q>* searcher) : _searcher(searcher) {}
