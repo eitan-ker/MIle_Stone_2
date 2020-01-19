@@ -24,10 +24,10 @@ public:
       int i = 0, currentSquare = 0;
       openlist.push_back(searcheable.getInitialState());
       while(!openlist.empty()) {
-        double minCost = openlist.begin()->getCost();
+        double minCost = searcheable(openlist.begin()).calculateF();
         for (typename std::vector<T>::iterator it = openlist.begin() ; it != openlist.end(); ++it, i++) {
-          if(*it.getCost() < minCost) { // find the point with the least f in the open list
-            minCost = *it.getCost();
+          if(searcheable(*it).calculateF() < minCost) { // find the point with the least f in the open list
+            minCost = searcheable(*it).calculateF();
             currentSquare = i - 1;
           }
         }
@@ -58,8 +58,10 @@ public:
             }
           }
         }
+        totalCost -= square.getCost();
         closedlist.push_back(square);
       }
+      throw "Failed to find the Destination Cell\n";
     }
 };
 #endif //MILE_STONE2__ASTAR_H_
