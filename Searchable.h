@@ -10,13 +10,18 @@ using namespace std;
 template<class T>
 class Searcheable { // gets a problem - we decide how we want to get it(string, io...)
  public:
-  virtual State<T> getInitialState() {
+  Searcheable() {
+    getInitialState().setCost(0);
+  }
+  virtual State<T>& getInitialState() {
 
   }
-  virtual bool isGoalState(State<T> state) {
+  virtual State<T>& getGoalState() {
 
   }
-  virtual vector<State<T>> getAllPossibleStates(State<T> state) {
+  virtual bool isGoalState(State<T>& state) {
+  }
+  virtual vector<State<T>> getAllPossibleStates(State<T>& state) {
     vector<State<T>> arr;
   }
 };
