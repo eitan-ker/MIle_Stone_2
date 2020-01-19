@@ -12,38 +12,36 @@
 template <class T, class Q, class P>
 class AStar : public Searcher<T,Q> {
  private:
-  vector<T> openlist;
-  vector<T> closedlist;
-  double totalCost;
+  vector<P> openlist;
+  vector<P> closedlist;
+  string ShortestPath = "";
 public:
-  AStar(){
-    this->totalCost = 0;// initialize total cost as zero
-  };
-    Q search(Searcheable<T,P>& searcheable) {
+  AStar(){}
+    string search(Searcheable<T,P>& searcheable) {
       T square;
       int i = 0, currentSquare = 0;
       openlist.push_back(searcheable.getInitialState());
       while(!openlist.empty()) {
-        double minCost = searcheable(openlist.begin()).calculateF();
+        double minCost = calculateF(searcheable, openlist.begin());
         for (typename std::vector<T>::iterator it = openlist.begin() ; it != openlist.end(); ++it, i++) {
-          if(calculateF(*it) < minCost) { // find the point with the least f in the open list
-            minCost = calculateF(*it);
+          if(calculateF(searcheable,*it) < minCost) { // find the point with the least f in the open list
+            minCost = calculateF(searcheable,*it);
             currentSquare = i - 1;
           }
         }
         typename std::vector<T>::iterator it1 = openlist.begin()+i;
-        square = *it1; //current q
-        this->totalCost += *it1.getCost();
-        openlist.erase(it1); // pop q from openlist
-        this->totalCost += square.getCost();
-        vector<T> successors = searcheable.getAllPossibleStates(square); // generate square's successors
+        int decideDirection = decideWhereICameFrom(*it1);
+        WriteDirection(decideDirection);
+        this->ShortestPath+=",";
+        vector<T> successors = searcheable.getAllPossibleStates(*it1); // generate square's successors
         for (typename std::vector<T>::iterator it = successors.begin() ; it != successors.end(); ++it) {
-          (*it).setCameFrom(square);
+          (*it).setCameFrom(*it1);
         }
+        openlist.erase(it1);
         for (typename std::vector<T>::iterator it = successors.begin() ; it != successors.end(); ++it) {
           if(*it.Equals(searcheable.getGoalState())) {
-            this->totalCost += *it.getCost();
-            return this->totalCost;
+            decideDirection = decideWhereICameFrom(*it);
+            WriteDirection(decideDirection);
           } else {
             T successor = *it;
             typename std::vector<T>::iterator it2 = find(openlist.begin(), openlist.end(), successor); //find successor in openlist
@@ -73,5 +71,45 @@ public:
     return abs(state.getState().getRow() - searcheable.getGoalState().getState().getRow()) +
         abs(state.getState().getCol() - searcheable.getGoalState().getState().getCol());
   }
+  int decideWhereICameFrom(State<T> state) {/*return the direction we move from parent : 0-initial state,
+ * 1-move to the left
+ * 2-move to the right
+ * 3-move down
+ * 4-move up*/
+      if(state.getCameFrom() == nullptr) {
+        return 0;
+      }
+      if(state.getState().getRow() == *(state.getCameFrom())->getState().getRow()) {
+        if(state.getState().getCol() > *(state.getCameFrom())->getState().getCol()) {
+          return 2;
+        } else {
+          return 1;
+        }
+      } else {
+        if(state.getState().getRow() > *(state.getCameFrom())->getState().getRow()) {
+          return 3;
+        } else {
+          return 4;
+        }
+      }
+    }
+    void WriteDirection(int decideDirection) {
+      switch(decideDirection) {
+        case 1 :
+          this->ShortestPath += "left";
+          break;
+        case 2 :
+          this->ShortestPath += "right";
+          break;
+        case 3 :
+          this->ShortestPath += "down";
+          break;
+        case 4 :
+          this->ShortestPath += "up";
+          break;
+        default:
+          break;
+      }
+    }
 };
 #endif //MILE_STONE2__ASTAR_H_

@@ -103,22 +103,26 @@ public :
         return stringValues;
     }
 
-    MatrixConverter(string problem) {
+    MatrixConverter(string problem){
         int lineLength = countLength(problem);
         initializeArray(problem, lineLength);
     }
 
-    State<P> *getInitialState() {
+    State<Point> *getInitialState() {
         return this->initalState;
     }
 
-    bool isGoalState(State<P> state) {
-        return state.Equals(this->goalState);
+    bool isGoalState(State<Point>& state) {
+  State<P>* goal = this->getGoalState();
+        return state.Equals(*goal);
+    }
+    State<Point>* getGoalState() {
+      return this->goalState;
     }
 
-    vector<State<P>> getAllPossibleStates(State<P> state) {
+    vector<State<Point>> getAllPossibleStates(State<Point>& state) {
         int leftFlag = 0, rightFlag = 0, upFlag = 0, downFlag = 0;
-        vector<State<P>> possibleStates;
+        vector<State<Point> *> possibleStates;
         double positionRow = state.getState().getRow();
         double positionCol = state.getState().getCol();
         int matrixSize = _matrix.size();
