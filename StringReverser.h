@@ -5,8 +5,8 @@
 #ifndef MILE_STONE2__STRINGREVERSER_H_
 #define MILE_STONE2__STRINGREVERSER_H_
 #include "Solver.h"
-template <class T, class Q>
-class StringReverser : public Solver<T,Q> {
+template <class T, class Q, class P>
+class StringReverser : public Solver<T,Q,P> {
   string solve(string problem) {
     int i = problem.length() - 1;
     const char* token = &problem[i];

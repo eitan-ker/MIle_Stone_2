@@ -10,10 +10,10 @@
 #include "ClientHandler.h"
 #include "Solver.h"
 #include "CacheManager.h"
-template <class T, class Q>
+template <class T, class Q, class P>
 class MyTestClientHandler : public CLientHandler {
  private :
-  Solver<T,Q>* solver;
+  Solver<T,Q,P>* solver;
   CacheManager<T,Q>* cm;
  public:
   void handleClient(int socket) {
@@ -67,7 +67,7 @@ class MyTestClientHandler : public CLientHandler {
       }
   }
 
-  MyTestClientHandler(Solver<T,Q> *s, CacheManager<T,Q>* cache) : solver(s), cm(cache) {}
+  MyTestClientHandler(Solver<T,Q,P> *s, CacheManager<T,Q>* cache) : solver(s), cm(cache) {}
 };
 
 
