@@ -12,18 +12,17 @@
 template <class T, class Q, class P>
 class AStar : public Searcher<T,Q> {
  private:
-  vector<T> openlist;
-  vector<T> closedlist;
+  vector<P> openlist;
+  vector<P> closedlist;
   string ShortestPath = "";
 public:
-  AStar(){
-  };
-    Q search(Searcheable<T,P>& searcheable) {
+  AStar(){}
+    string search(Searcheable<T,P>& searcheable) {
       T square;
       int i = 0, currentSquare = 0;
       openlist.push_back(searcheable.getInitialState());
       while(!openlist.empty()) {
-        double minCost = searcheable(openlist.begin()).calculateF();
+        double minCost = calculateF(searcheable, openlist.begin());
         for (typename std::vector<T>::iterator it = openlist.begin() ; it != openlist.end(); ++it, i++) {
           if(calculateF(searcheable,*it) < minCost) { // find the point with the least f in the open list
             minCost = calculateF(searcheable,*it);
