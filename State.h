@@ -6,20 +6,20 @@
 #define MILE_STONE2__STATE_H_
 
 #include "Point.h"
-template<class T>
+template<class P>
 class State {
 private :
-    T _state; // the state represented by string
+    P* _state; // the state represented by point
     double _cost; // cost to reach this state
-    State* _cameFrom; //the state we came from to this state
+    State<P>* _cameFrom; //the state we came from to this state
 public:
-    State(T state, double cost) {
+    State(P* state, double cost) {
         this->_cost = cost;
         this->_state = state;
         this->_cameFrom = nullptr;
     };
-    void setCameFrom(State parent) {
-      this->*_cameFrom = parent;
+    void setCameFrom(State<P>* parent) {
+      this->_cameFrom = parent;
     }
     double getCost() {
       return this->_cost;
@@ -27,13 +27,13 @@ public:
     void setCost(double val) {
       this->_cost = val;
     }
-    T getState() {
+    P* getState() {
       return this->_state;
     }
-    bool Equals(T s) {
-        return this->_state->Equals(s->getState());
+    bool Equals(State<P>* s) {
+         return this->_state->Equals(s->getState());
     }
-    State<T>*& getCameFrom() {
+    State<P>* getCameFrom() {
       return this->_cameFrom;
     }
 };
