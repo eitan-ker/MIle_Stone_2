@@ -8,16 +8,19 @@
 #include "Solver.h"
 #include "Searchable.h"
 #include "MatrixConverter.h"
+#include "AStar.h"
 
 template<class T,class Q, class P>
 class OA : public Solver<T,Q,P> { // gets a problem - we decide how we want to get it(string, io...)
 private:
-    //Searcheable<T>* _searchable;
-   // Searcher<T,Q>* _searcher;
+
 public:
     Q solve(T problem) {
         // State<T> state = new State<string>();
       Searcheable<T,P>* searcheable = new MatrixConverter<string,Point>(problem);
+    Searcher<T,Q,P>* a = new AStar<string,string,Point>();
+    string solution = a->search(searcheable);
+   //   vector<State<Point> *> vec = searcheable->getAllPossibleStates(searcheable->getInitialState());
         cout << "endl" << endl;
     }
   //  OA(Searcher<T,Q>* searcher) : _searcher(searcher) {}
