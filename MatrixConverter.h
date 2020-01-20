@@ -15,9 +15,9 @@ template<class T, class P>
 
 class MatrixConverter : public Searcheable<T, P> {
 private:
-    vector<vector<State<Point> *>> _matrix;
-    State<Point> *initalState;
-    State<Point> *goalState;
+    vector<vector<State<P> *>> _matrix;
+    State<P> *initalState;
+    State<P> *goalState;
 public :
     // make matrix
     int countLength(string problem) {
@@ -54,11 +54,11 @@ public :
                 // if we initial matrix
                 if (r < lineLength) {
                     stringValues = onlyValues(line + ",", lineLength);
-                    vector<State<Point> *> vec;
+                    vector<State<P> *> vec;
                     // columns
                     for (c = 0; c < lineLength; c++) {
                         Point *p = new Point(r, c);
-                        State<Point> *s = new State<Point>(p, stringValues[c]);
+                        State<P> *s = new State<Point>(p, stringValues[c]);
                         vec.insert(vec.end(), s);
                     }
                     _matrix.push_back(vec);
@@ -108,23 +108,22 @@ public :
         initializeArray(problem, lineLength);
     }
 
-    State<Point> *getInitialState() {
+    State<P> *getInitialState() {
         return this->initalState;
     }
 
-    bool isGoalState(State<Point>& state) {
-  State<P>* goal = this->getGoalState();
-        return state.Equals(*goal);
+    bool isGoalState(State<P>* state) {
+      return state == this->goalState;
     }
-    State<Point>* getGoalState() {
+    State<P>* getGoalState() {
       return this->goalState;
     }
 
-    vector<State<Point>> getAllPossibleStates(State<Point>& state) {
+    vector<State<P> *> getAllPossibleStates(State<Point>* state) {
         int leftFlag = 0, rightFlag = 0, upFlag = 0, downFlag = 0;
-        vector<State<Point> *> possibleStates;
-        double positionRow = state.getState().getRow();
-        double positionCol = state.getState().getCol();
+        vector<State<P>*> possibleStates;
+        double positionRow = state->getState()->getRow();
+        double positionCol = state->getState()->getCol();
         int matrixSize = _matrix.size();
         if (positionRow != 0) {
             possibleStates.push_back(_matrix[positionRow - 1][positionCol]);
