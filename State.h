@@ -9,11 +9,11 @@
 template<class T>
 class State {
 private :
-    T* _state; // the state represented by string
+    T _state; // the state represented by string
     double _cost; // cost to reach this state
     State* _cameFrom; //the state we came from to this state
 public:
-    State(T* state, double cost) {
+    State(T state, double cost) {
         this->_cost = cost;
         this->_state = state;
         this->_cameFrom = nullptr;
@@ -30,8 +30,8 @@ public:
     T getState() {
       return this->_state;
     }
-    bool Equals(State<T> s) {
-        return this->_state.Eqals(s.getState());
+    bool Equals(T s) {
+        return this->_state->Equals(s->getState());
     }
     State<T>*& getCameFrom() {
       return this->_cameFrom;

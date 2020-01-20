@@ -14,11 +14,10 @@ class OA : public Solver<T,Q,P> { // gets a problem - we decide how we want to g
 private:
     //Searcheable<T>* _searchable;
    // Searcher<T,Q>* _searcher;
-    Searcheable<T,P>* searcheable;
 public:
     Q solve(T problem) {
         // State<T> state = new State<string>();
-//        searcheable = new MatrixConverter<string,Point>(problem);
+      Searcheable<T,P>* searcheable = new MatrixConverter<string,Point>(problem);
         cout << "endl" << endl;
     }
   //  OA(Searcher<T,Q>* searcher) : _searcher(searcher) {}

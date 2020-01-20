@@ -17,7 +17,7 @@ double Point::getCol() {
     return this->col;
 }
 
-bool Point::Eqals(Point p) {
+bool Point::Equals(Point p) {
     return (this->row == p.getRow()) && (this->col == p.getCol());
 
 }

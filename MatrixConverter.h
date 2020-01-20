@@ -58,7 +58,7 @@ public :
                     // columns
                     for (c = 0; c < lineLength; c++) {
                         Point *p = new Point(r, c);
-                        State<Point> *s = new State<Point>(p, stringValues[c]);
+                        State<Point> *s = new State<Point>(*p, stringValues[c]);
                         vec.insert(vec.end(), s);
                     }
                     _matrix.push_back(vec);
@@ -112,17 +112,16 @@ public :
         return this->initalState;
     }
 
-    bool isGoalState(State<Point>& state) {
-  State<P>* goal = this->getGoalState();
-        return state.Equals(*goal);
+    bool isGoalState(State<Point>* state) {
+      return state == this->goalState;
     }
     State<Point>* getGoalState() {
       return this->goalState;
     }
 
-    vector<State<Point>> getAllPossibleStates(State<Point>& state) {
+    vector<State<Point> *> getAllPossibleStates(State<Point>& state) {
         int leftFlag = 0, rightFlag = 0, upFlag = 0, downFlag = 0;
-        vector<State<Point> *> possibleStates;
+        vector<State<Point>*> possibleStates;
         double positionRow = state.getState().getRow();
         double positionCol = state.getState().getCol();
         int matrixSize = _matrix.size();

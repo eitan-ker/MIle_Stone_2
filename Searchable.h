@@ -13,7 +13,7 @@ class Searcheable { // gets a problem - we decide how we want to get it(string, 
   Searcheable<T,P>(){}
   virtual State<P>* getInitialState() = 0;
   virtual State<P>* getGoalState() = 0;
-  virtual bool isGoalState(State<P>& state) = 0;
-  virtual vector<State<P>> getAllPossibleStates(State<P>& state) = 0;
+  virtual bool isGoalState(State<P>* state) = 0;
+  virtual vector<State<P> *> getAllPossibleStates(State<P>& state) = 0;
 };
 #endif //MILE_STONE2__SEARCHABLE_H_

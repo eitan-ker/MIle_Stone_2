@@ -9,10 +9,11 @@ private:
     double row;
     double col;
 public:
+    Point(){}
     Point(double r, double c);
     double getCol();
     double getRow();
-    bool Eqals(Point p);
+    bool Equals(Point p);
 };
 
 
