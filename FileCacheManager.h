@@ -53,9 +53,9 @@ class FileCacheManager : public CacheManager<T,Q> {
     }
   } // pop solution to problem P
   void save(T problem, Q solution) {
+    int hashCode = std::hash<std::string>()(problem);
     this->getProblemQueryMap()[problem] = solution; // save solution s to problem P in map
     try {
-      int hashCode = std::hash<std::string>()(problem);
       ofstream myfile{to_string(hashCode), ios::out | ios::trunc};
       if (!myfile.is_open()) {
         throw "cant open file";
