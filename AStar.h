@@ -16,9 +16,17 @@ class AStar : public Searcher<T, Q, P> {
  private:
   vector<State<P>*> openlist;
   vector<State<P>*> closedlist;
-  string ShortestPath = "";
+  double totalCost;
+  string shortestPath = "";
+  int whenToGetLine;
  public:
-  AStar() {}
+  string getShortestPath() {
+    return this->shortestPath;
+  }
+  AStar() {
+    this->totalCost = 0;
+    this->whenToGetLine = 0;
+  }
 
   double calculateG(State<P> *state) {
     return state->getCost();
@@ -52,69 +60,92 @@ class AStar : public Searcher<T, Q, P> {
       }
     }
   }
-  void WriteDirection(int decideDirection) {
+  void WriteDirection(int decideDirection, double totalCost) {
+    string extra;
     switch (decideDirection) {
-      case 1 :this->ShortestPath += "left";
+      case 1:
+        extra = "Left (" + to_string(this->totalCost) + ")";
+        this->shortestPath+=extra;
         break;
-      case 2 :this->ShortestPath += "right";
+      case 2 :
+        extra = "Right (" + to_string(this->totalCost) + ")";
+        this->shortestPath+=extra;
         break;
-      case 3 :this->ShortestPath += "down";
+      case 3 :
+        extra = "Down (" + to_string(this->totalCost) + ")";
+        this->shortestPath+=extra;
         break;
-      case 4 :this->ShortestPath += "up";
+      case 4 :extra = "Up (" + to_string(this->totalCost) + ")";
+        this->shortestPath+=extra;
         break;
       default:break;
     }
   }
   Q search(Searcheable<T, P> *searcheable) {
     State<P> *square;
+    typename std::vector<State<P>*>::iterator it;
+    double minCost = 0, minCost1 = 0;
     int i = 0, currentSquare = 0;
     openlist.push_back(searcheable->getInitialState());
     while (!openlist.empty()) {
-      double minCost = calculateF(searcheable, openlist[0]);
-      for (typename std::vector<State<P>*>::iterator it = openlist.begin(); it != openlist.end(); ++it, i++) {
-        if (calculateF(searcheable, *it) < minCost) { // find the point with the least f in the open list
-          minCost = calculateF(searcheable, *it);
-          currentSquare = i - 1;
+      minCost = calculateF(searcheable, openlist[0]);
+      for(auto itr : openlist) {
+        minCost1 = calculateF(searcheable, itr);
+        if (minCost > minCost1) { // find the point with the least f in the open list
+          minCost = minCost1;
+          currentSquare = i;
         }
+        i++;
       }
+      i = 0;
       typename std::vector<State<P>*>::iterator it1 = openlist.begin() + currentSquare;
+      square = *it1;
+      openlist.erase(it1);
       int decideDirection = decideWhereICameFrom(*it1);
-      WriteDirection(decideDirection);
+      totalCost += (*it1)->getCost();
+      WriteDirection(decideDirection, totalCost);
       if(decideDirection!= 0) {
-        this->ShortestPath += ",";
+        this->shortestPath+=",";
       }
-      vector<State<P>*> successors = searcheable->getAllPossibleStates(*it1); // generate square's successors
-      for (typename std::vector<State<P>*>::iterator it = successors.begin(); it != successors.end(); ++it) {
+      this->whenToGetLine++;
+      if(this->whenToGetLine > 10) {
+        this->shortestPath+="\r\n";
+        this->whenToGetLine = 0;
+      }
+      vector<State<P>*> successors = searcheable->getAllPossibleStates(square); // generate square's successors
+      for (it = successors.begin(); it != successors.end(); ++it) {
         (*it)->setCameFrom(*it1);
       }
-      for (typename std::vector<State<P> *>::iterator it = successors.begin(); it != successors.end(); ++it) {
+      for (it = successors.begin(); it != successors.end(); ++it) {
         if ((*it)->Equals(searcheable->getGoalState())) {
           decideDirection = decideWhereICameFrom(*it);
-          WriteDirection(decideDirection);
-          return ShortestPath;
+          totalCost += (*it)->getCost();
+          WriteDirection(decideDirection,totalCost);
+          return getShortestPath();
         } else {
           State<P>* successor = *it;
           typename std::vector<State<P>*>::iterator it2 = std::find(openlist.begin(), openlist.end(), successor);
           typename std::vector<State<P>*>::iterator it3 = std::find(closedlist.begin(), closedlist.end(), successor); //find successor in closedlist
-          if (it2 != openlist.end()) { /* if a node with the same position as
+          if (it2 != openlist.end() && successor->Equals(*it2)) { /* if a node with the same position as
               successor is in the OPEN list which has a
               lower f than successor, skip this successor*/
-            if (calculateF(searcheable, successor) < calculateF(searcheable, *it)) {
-              //skip this phase
-            }
-          } else if (it3 != closedlist.end()) {
-            if (calculateF(searcheable, successor) < calculateF(searcheable, *it)) {
+            if (calculateF(searcheable, successor) >= calculateF(searcheable, *it2)) {
               //skip this phase
             } else {
-              openlist.push_back(*it);
+              openlist.push_back(successor);
+            }
+          } else if (it3 != closedlist.end() && successor->Equals(*it3)) {
+            if (calculateF(searcheable, successor) >= calculateF(searcheable, *it3)) {
+              //skip this phase
+            } else {
+              openlist.push_back(successor);
             }
           } else {
-            openlist.push_back(*it);
+            openlist.push_back(successor);
           }
         }
       }
-      closedlist.push_back(*it1);
-      openlist.erase(it1);
+      closedlist.push_back(square);
     }
     throw "Failed to find the Destination Cell\n";
   }

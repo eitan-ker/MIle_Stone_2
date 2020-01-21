@@ -120,22 +120,31 @@ public :
     }
 
     vector<State<P> *> getAllPossibleStates(State<Point>* state) {
+      double inf = std::numeric_limits<double>::infinity();
         int leftFlag = 0, rightFlag = 0, upFlag = 0, downFlag = 0;
         vector<State<P>*> possibleStates;
         double positionRow = state->getState()->getRow();
         double positionCol = state->getState()->getCol();
         int matrixSize = _matrix.size();
-        if (positionRow != 0) {
+        if (positionRow > 0) {
+          if(_matrix[positionRow - 1][positionCol]->getCost() != inf) {
             possibleStates.push_back(_matrix[positionRow - 1][positionCol]);
+          }
         }
-        if (positionRow != matrixSize - 1) {
+        if (positionRow < matrixSize - 1) {
+          if(_matrix[positionRow + 1][positionCol]->getCost() != inf) {
             possibleStates.push_back(_matrix[positionRow + 1][positionCol]);
+          }
         }
-        if (positionCol != 0) {
+        if (positionCol > 0) {
+          if(_matrix[positionRow][positionCol - 1]->getCost() != inf) {
             possibleStates.push_back(_matrix[positionRow][positionCol - 1]);
+          }
         }
-        if (positionCol != matrixSize - 1) {
+        if (positionCol < matrixSize - 1) {
+          if(_matrix[positionRow][positionCol + 1]->getCost() != inf) {
             possibleStates.push_back(_matrix[positionRow][positionCol + 1]);
+          }
         }
         return possibleStates;
     }
