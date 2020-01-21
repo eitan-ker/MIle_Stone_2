@@ -16,9 +16,14 @@ class AStar : public Searcher<T, Q, P> {
  private:
   vector<State<P>*> openlist;
   vector<State<P>*> closedlist;
-  string ShortestPath = "";
+  double totalCost;
+  string shortestPath = "";
+  int whenToGetLine;
  public:
-  AStar() {}
+  AStar() {
+    this->totalCost = 0;
+    this->whenToGetLine = 0;
+  }
 
   double calculateG(State<P> *state) {
     return state->getCost();
@@ -52,15 +57,19 @@ class AStar : public Searcher<T, Q, P> {
       }
     }
   }
-  void WriteDirection(int decideDirection) {
+  void WriteDirection(int decideDirection, double totalCost) {
     switch (decideDirection) {
-      case 1 :this->ShortestPath += "left";
+      case 1: cout<< "Left (" << totalCost << ")";
+      this->shortestPath+="Left";
         break;
-      case 2 :this->ShortestPath += "right";
+      case 2 :cout<< "Right ("<< totalCost << ")";
+        this->shortestPath+="Right";
         break;
-      case 3 :this->ShortestPath += "down";
+      case 3 :cout<< "Down (" << totalCost << ")";
+      this->shortestPath+="Down";
         break;
-      case 4 :this->ShortestPath += "up";
+      case 4 :cout<< "Up (" << totalCost << ")";
+        this->shortestPath+="Up";
         break;
       default:break;
     }
@@ -86,9 +95,16 @@ class AStar : public Searcher<T, Q, P> {
       square = *it1;
       openlist.erase(it1);
       int decideDirection = decideWhereICameFrom(*it1);
-      WriteDirection(decideDirection);
+      totalCost += (*it1)->getCost();
+      WriteDirection(decideDirection, totalCost);
       if(decideDirection!= 0) {
-        this->ShortestPath += ",";
+        cout << ",";
+        this->shortestPath+=",";
+      }
+      this->whenToGetLine++;
+      if(this->whenToGetLine > 10) {
+        cout <<endl;
+        this->whenToGetLine = 0;
       }
       vector<State<P>*> successors = searcheable->getAllPossibleStates(square); // generate square's successors
       for (it = successors.begin(); it != successors.end(); ++it) {
@@ -97,8 +113,9 @@ class AStar : public Searcher<T, Q, P> {
       for (it = successors.begin(); it != successors.end(); ++it) {
         if ((*it)->Equals(searcheable->getGoalState())) {
           decideDirection = decideWhereICameFrom(*it);
-          WriteDirection(decideDirection);
-          return ShortestPath;
+          totalCost += (*it)->getCost();
+          WriteDirection(decideDirection,totalCost);
+          return this->shortestPath;
         } else {
           State<P>* successor = *it;
           typename std::vector<State<P>*>::iterator it2 = std::find(openlist.begin(), openlist.end(), successor);
