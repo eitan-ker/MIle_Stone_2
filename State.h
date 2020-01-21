@@ -11,18 +11,32 @@ class State {
 private :
     P* _state; // the state represented by point
     double _cost; // cost to reach this state
+    double _totalCost;
+    int is_visited;
     State<P>* _cameFrom; //the state we came from to this state
 public:
     State(P* state, double cost) {
         this->_cost = cost;
         this->_state = state;
         this->_cameFrom = nullptr;
+        this->is_visited = 0;
+        this->_totalCost = 0;
     };
+    void set_visited() {
+      this->is_visited = 1;
+    }
+    int getVisited() {
+      return this->is_visited;
+    }
     void setCameFrom(State<P>* parent) {
       this->_cameFrom = parent;
+      this->gettotalCost()+=parent->gettotalCost();
     }
     double getCost() {
       return this->_cost;
+    }
+    double gettotalCost() {
+      return this->_totalCost;
     }
     void setCost(double val) {
       this->_cost = val;
