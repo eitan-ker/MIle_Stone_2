@@ -27,7 +27,7 @@ public:
         int sim_index = 0;
         int endFlag = 0, solFlag = 0, is_sent = 0, iterFlag = 0, soluLength = 0;
         char *splitBuf;
-        string solution = "", bufferString = "", temp = "";
+        string solution = "123", bufferString = "", temp = "";
         char buffer[1024] = {0};
         int valread = read(socket, buffer, 1024);
         bufferString = buffer;
@@ -41,7 +41,7 @@ public:
             bufferString = bufferString + tempBuffer + "\n";
         }
         // send 1024 bites of buffer - info required is 328 bites
-        solFlag = this->cm->doWeHaveSolution(bufferString);
+        //solFlag = this->cm->doWeHaveSolution(bufferString);
         if (solFlag) { // if we have a solution in cache
             solution = this->cm->pop(bufferString); // we get the solution from cache
 
@@ -58,10 +58,7 @@ public:
                 std::cout << "Error sending message" << std::endl;
             }
         } else {
-            // we don't have a solution
-            solution = this->solver->solve(bufferString); // solution have the solution string
-
-
+          //string so = this->cm->pop(bufferString); // we get the solution from cache
 
             // send solution to client
             is_sent = send(socket, solution.c_str(), strlen(solution.c_str()), 0);
@@ -72,7 +69,7 @@ public:
                 std::cout << "Error sending message" << std::endl;
             }
             // solve with Solver
-            this->cm->save(bufferString, solution); // save the probkem and solution
+           this->cm->save(bufferString, solver->solve(bufferString)); // save the probkem and solution
         }
     }
 

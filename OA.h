@@ -9,6 +9,8 @@
 #include "Searchable.h"
 #include "MatrixConverter.h"
 #include "AStar.h"
+#include "BestFirstSearch.h"
+#include "DFS.h"
 
 template<class T,class Q, class P>
 class OA : public Solver<T,Q,P> { // gets a problem - we decide how we want to get it(string, io...)
@@ -18,11 +20,9 @@ public:
     Q solve(T problem) {
         // State<T> state = new State<string>();
       Searcheable<T,P>* searcheable = new MatrixConverter<string,Point>(problem);
-    Searcher<T,Q,P>* a = new AStar<string,string,Point>();
+    Searcher<T,Q,P>* a = new DFS<string,string,Point>();
     string solution = a->search(searcheable);
-   //   vector<State<Point> *> vec = searcheable->getAllPossibleStates(searcheable->getInitialState());
-        cout << "endl" << endl;
+        return solution;
     }
-  //  OA(Searcher<T,Q>* searcher) : _searcher(searcher) {}
 };
 #endif //MILE_STONE2__OT_H_
