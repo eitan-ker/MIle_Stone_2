@@ -34,10 +34,7 @@ public:
 
     void setCameFrom(State<P> *parent) {
         this->_cameFrom = parent;
-        if (parent->gettotalCost() != 0) {
-            this->settotalCost(parent->gettotalCost());
-        }
-        this->settotalCost(parent->getCost());
+        this->settotalCost(this->getCost() + parent->gettotalCost());
     }
 
     double getCost() {
