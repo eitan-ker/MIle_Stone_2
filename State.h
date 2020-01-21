@@ -30,13 +30,16 @@ public:
     }
     void setCameFrom(State<P>* parent) {
       this->_cameFrom = parent;
-      this->gettotalCost()+=parent->gettotalCost();
+      this->settotalCost(parent->gettotalCost());
     }
     double getCost() {
       return this->_cost;
     }
     double gettotalCost() {
       return this->_totalCost;
+    }
+    void settotalCost(double val) {
+      this->_totalCost += val;
     }
     void setCost(double val) {
       this->_cost = val;
