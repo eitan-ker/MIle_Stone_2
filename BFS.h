@@ -70,28 +70,23 @@ public:
         // first print of direcion
         int diraction = decideWhereICameFrom(curr);
 
-        curr = curr->getCameFrom();
-
         WriteDirection(diraction, curr->gettotalCost());
 
+        curr = curr->getCameFrom();
         // all the rest direction prints.
 
-        while (curr != nullptr) {
+        while (curr->getCameFrom() != nullptr) {
             this->shortestPath = ", " + this->shortestPath;
             int diraction = decideWhereICameFrom(curr);
-            // first we're pointing to father, than we can print cost.
-            // it's the cost to move from the father to son
-
-            curr = curr->getCameFrom();
 
             if (curr->getCameFrom() == nullptr) {
                 WriteDirection(diraction, curr->getCost());
-                curr = curr->getCameFrom();
 
             } else {
                 WriteDirection(diraction, curr->gettotalCost());
             }
 
+            curr = curr->getCameFrom();
         }
     }
 
