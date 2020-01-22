@@ -5,6 +5,7 @@
 #ifndef MILE_STONE2__STATE_H_
 #define MILE_STONE2__STATE_H_
 
+#include <limits>
 #include "Point.h"
 
 template<class P>
@@ -14,6 +15,8 @@ private :
     double _cost; // cost to reach this state
     double _totalCost;
     int is_visited;
+    double calculateG;
+    double calculateF;
     State<P> *_cameFrom; //the state we came from to this state
 public:
     State(P *state, double cost) {
@@ -22,6 +25,8 @@ public:
         this->_cameFrom = nullptr;
         this->is_visited = 0;
         this->_totalCost = 0;
+        this->calculateG =  std::numeric_limits<double>::infinity();
+        this->calculateF =  std::numeric_limits<double>::infinity();
     };
 
     void set_visited() {
@@ -34,17 +39,20 @@ public:
 
     void setCameFrom(State<P> *parent) {
         this->_cameFrom = parent;
-        if (parent->gettotalCost() != 0) {
-            this->settotalCost(this->getCost() + parent->gettotalCost());
-        } else {
-            this->settotalCost(this->getCost() + parent->getCost());
-        }
+        this->settotalCost(this->getCost() + parent->gettotalCost());
     }
 
     double getCost() {
         return this->_cost;
     }
 
+    void resetState() {
+      this->_cameFrom = nullptr;
+      this->is_visited = 0;
+      this->calculateG = 0;
+      this->calculateF = 0;
+      this->_totalCost = 0;
+    }
     double gettotalCost() {
         return this->_totalCost;
     }
@@ -67,6 +75,18 @@ public:
 
     State<P> *getCameFrom() {
         return this->_cameFrom;
+    }
+    void setG(double val) {
+      this->calculateG = val;
+    }
+    double getG() {
+      return this->calculateG;
+    }
+    void setF(double val) {
+      this->calculateF = val;
+    }
+    double getF() {
+      return this->calculateF;
     }
 };
 
