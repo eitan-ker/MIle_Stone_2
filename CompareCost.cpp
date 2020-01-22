@@ -4,9 +4,8 @@
 //
 template<class P>
 struct CompareCost {
-  bool operator()(State<P>* const& p1, State<P>* const& p2)
-  {
-    return p1->gettotalCost() > p2->gettotalCost();
-  }
+    bool operator()(State<P>* const& p1, State<P>* const& p2)
+    {
+        return p1->gettotalCost() > p2->gettotalCost();
+    }
 };
-
