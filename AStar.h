@@ -8,14 +8,21 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
+#include <map>
+#include <queue>
+#include <set>
+#include <stack>
 #include "Searcher.h"
 #include "Searchable.h"
+#include "CompareG.cpp"
 void WriteDirection(int decideDirection);
 template<class T, class Q, class P>
 class AStar : public Searcher<T, Q, P> {
  private:
-  vector<State<P>*> openlist;
-  vector<State<P>*> closedlist;
+  std::priority_queue<State<P>*, vector<State<P>*>, CompareG<P>>  priorityQueue;
+  std::set<State<P>*>  OpenList;
+  std::map<State<P>*,double> cameFrom;
+  stack<State<P>*> Selectedpath;
   double totalCost;
   string shortestPath = "";
   int whenToGetLine;
@@ -29,7 +36,13 @@ class AStar : public Searcher<T, Q, P> {
   }
 
   double calculateG(State<P> *state) {
-    return state->getCost();
+    typename std::map<State<P>*,double>::iterator it;
+    it = cameFrom.find(state);
+    if (it != cameFrom.end()) {
+      return cameFrom[state];
+    } else {
+      return std::numeric_limits<double>::infinity();
+    }
   }
   double calculateF(Searcheable<T, P>* searchable, State<P> *state) {
     return calculateG(state) + calculateH(searchable, state);
@@ -64,89 +77,86 @@ class AStar : public Searcher<T, Q, P> {
     string extra;
     switch (decideDirection) {
       case 1:
-        extra = "Left (" + to_string(this->totalCost) + ")";
+        extra = "Left (" + to_string(totalCost) + ")";
         this->shortestPath+=extra;
         break;
       case 2 :
-        extra = "Right (" + to_string(this->totalCost) + ")";
+        extra = "Right (" + to_string(totalCost) + ")";
         this->shortestPath+=extra;
         break;
       case 3 :
-        extra = "Down (" + to_string(this->totalCost) + ")";
+        extra = "Down (" + to_string(totalCost) + ")";
         this->shortestPath+=extra;
         break;
-      case 4 :extra = "Up (" + to_string(this->totalCost) + ")";
+      case 4 :extra = "Up (" + to_string(totalCost) + ")";
         this->shortestPath+=extra;
         break;
       default:break;
     }
   }
-  Q search(Searcheable<T, P> *searcheable) {
-    State<P> *square;
-    typename std::vector<State<P>*>::iterator it;
-    double minCost = 0, minCost1 = 0;
-    int i = 0, currentSquare = 0;
-    openlist.push_back(searcheable->getInitialState());
-    while (!openlist.empty()) {
-      minCost = calculateF(searcheable, openlist[0]);
-      for(auto itr : openlist) {
-        minCost1 = calculateF(searcheable, itr);
-        if (minCost > minCost1) { // find the point with the least f in the open list
-          minCost = minCost1;
-          currentSquare = i;
-        }
-        i++;
-      }
-      i = 0;
-      typename std::vector<State<P>*>::iterator it1 = openlist.begin() + currentSquare;
-      square = *it1;
-      openlist.erase(it1);
-      int decideDirection = decideWhereICameFrom(*it1);
-      totalCost += (*it1)->getCost();
-      WriteDirection(decideDirection, totalCost);
-      if(decideDirection!= 0) {
+  void addToSelectedpath(State<P>* state) {
+    if (state->getCameFrom()==nullptr) {
+      this->Selectedpath.push(state);
+      return;
+    }
+    this->Selectedpath.push(state);
+    this->addToSelectedpath(state->getCameFrom());
+  }
+  void printPath() {
+    int decideDirection;
+    while(!(this->Selectedpath.empty())) {
+      decideDirection = decideWhereICameFrom(this->Selectedpath.top());
+      WriteDirection(decideDirection, this->Selectedpath.top()->getG());
+      if(decideDirection!= 0 && this->Selectedpath.size() > 1) {
         this->shortestPath+=",";
       }
-      this->whenToGetLine++;
-      if(this->whenToGetLine > 8) {
+      if(this->whenToGetLine > 9) {
         this->shortestPath+="\r\n";
         this->whenToGetLine = 0;
       }
-      vector<State<P>*> successors = searcheable->getAllPossibleStates(square); // generate square's successors
-      for (it = successors.begin(); it != successors.end(); ++it) {
-        (*it)->setCameFrom(*it1);
+      this->whenToGetLine++;
+      this->Selectedpath.pop();
+    }
+  }
+  Q search(Searcheable<T, P> *searcheable) { //based on Wikipedia A* algo
+    State<P> *square;
+    typename std::set<State<P> *>::iterator it6;
+    typename std::vector<State<P> *>::iterator it;
+    double minCost = 0, minCost1 = 0;
+    int i = 0, currentSquare = 0;
+    OpenList.insert(searcheable->getInitialState());
+    priorityQueue.push(searcheable->getInitialState());
+    cameFrom[searcheable->getInitialState()] = searcheable->getInitialState()->gettotalCost();
+    searcheable->getInitialState()->setG(cameFrom[searcheable->getInitialState()]);
+    searcheable->getInitialState()->setF(searcheable->getInitialState()->getG() + calculateH(searcheable, searcheable->getInitialState()));
+    while (!priorityQueue.empty()) {
+      State<P> *square = priorityQueue.top();
+        priorityQueue.pop();
+        it6 = OpenList.find(square);
+        if(it6 != OpenList.end()) {
+          OpenList.erase(square);
+        }
+      if ((square)->Equals(searcheable->getGoalState())) {
+        addToSelectedpath(square);
+        printPath();
+        return getShortestPath();
       }
-      for (it = successors.begin(); it != successors.end(); ++it) {
-        if ((*it)->Equals(searcheable->getGoalState())) {
-          decideDirection = decideWhereICameFrom(*it);
-          totalCost += (*it)->getCost();
-          WriteDirection(decideDirection,totalCost);
-          return getShortestPath();
-        } else {
-          State<P>* successor = *it;
-          typename std::vector<State<P>*>::iterator it2 = std::find(openlist.begin(), openlist.end(), successor);
-          typename std::vector<State<P>*>::iterator it3 = std::find(closedlist.begin(), closedlist.end(), successor); //find successor in closedlist
-          if (it2 != openlist.end() && successor->Equals(*it2)) { /* if a node with the same position as
-              successor is in the OPEN list which has a
-              lower f than successor, skip this successor*/
-            if (calculateF(searcheable, successor) >= calculateF(searcheable, *it2)) {
-              //skip this phase
-            } else {
-              openlist.push_back(successor);
+      vector<State<P> *> successors = searcheable->getAllPossibleStates(square); // generate square's successors
+        for (it = successors.begin(); it != successors.end(); ++it) {
+          State<P> *successor = *it;
+          double tentative_gScore = calculateG(square) + (*it)->getCost();
+          if (tentative_gScore < calculateG(successor)) {
+            this->cameFrom[successor] = tentative_gScore;
+            successor->setG(tentative_gScore);
+            successor->setF(successor->getG() + calculateH(searcheable, successor));
+            (*it)->setCameFrom(square);
+            if (OpenList.find(successor) == OpenList.end()) {
+              OpenList.insert(successor);
+              priorityQueue.push(successor);
             }
-          } else if (it3 != closedlist.end() && successor->Equals(*it3)) {
-            if (calculateF(searcheable, successor) >= calculateF(searcheable, *it3)) {
-              //skip this phase
-            } else {
-              openlist.push_back(successor);
-            }
-          } else {
-            openlist.push_back(successor);
+          }
           }
         }
-      }
-      closedlist.push_back(square);
-    }
     throw "Failed to find the Destination Cell\n";
   }
 };
