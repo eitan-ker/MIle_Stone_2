@@ -106,6 +106,9 @@ public :
     MatrixConverter(string problem){
         int lineLength = countLength(problem);
         initializeArray(problem, lineLength);
+        this->getInitialState()->settotalCost(this->getInitialState()->getCost());
+        this->getInitialState()->setG(0);
+        this->getInitialState()->setF(this->getGoalState()->getState()->getCol() + this->getGoalState()->getState()->getRow());
     }
 
     State<P> *getInitialState() {
@@ -118,31 +121,41 @@ public :
     State<P>* getGoalState() {
       return this->goalState;
     }
+    void ResetMatrix() {
+      typename std::vector<vector<State<P>*>>::iterator it2;
+      typename std::vector<State<P>*>::iterator it3;
+      for (it2 = this->_matrix.begin(); it2!= this->_matrix.end(); it2++) {
+        vector<State<P>*> vec = (*it2);
+        for (it3 = vec.begin(); it3!= vec.end(); it3++) {
+          (*it3)->resetState();
+        }
+      }
+      this->getInitialState()->settotalCost(this->getInitialState()->getCost());
+    }
 
     vector<State<P> *> getAllPossibleStates(State<Point>* state) {
-      double inf = std::numeric_limits<double>::infinity();
         int leftFlag = 0, rightFlag = 0, upFlag = 0, downFlag = 0;
         vector<State<P>*> possibleStates;
         double positionRow = state->getState()->getRow();
         double positionCol = state->getState()->getCol();
         int matrixSize = _matrix.size();
         if (positionRow > 0) {
-          if(_matrix[positionRow - 1][positionCol]->getCost() != inf) {
+          if(_matrix[positionRow - 1][positionCol]->getCost() != (-1)) {
             possibleStates.push_back(_matrix[positionRow - 1][positionCol]);
           }
         }
         if (positionRow < matrixSize - 1) {
-          if(_matrix[positionRow + 1][positionCol]->getCost() != inf) {
+          if(_matrix[positionRow + 1][positionCol]->getCost() != (-1)) {
             possibleStates.push_back(_matrix[positionRow + 1][positionCol]);
           }
         }
         if (positionCol > 0) {
-          if(_matrix[positionRow][positionCol - 1]->getCost() != inf) {
+          if(_matrix[positionRow][positionCol - 1]->getCost() != (-1)) {
             possibleStates.push_back(_matrix[positionRow][positionCol - 1]);
           }
         }
         if (positionCol < matrixSize - 1) {
-          if(_matrix[positionRow][positionCol + 1]->getCost() != inf) {
+          if(_matrix[positionRow][positionCol + 1]->getCost() != (-1)) {
             possibleStates.push_back(_matrix[positionRow][positionCol + 1]);
           }
         }
