@@ -108,7 +108,7 @@ class AStar : public Searcher<T, Q, P> {
         this->shortestPath+=",";
       }
       this->whenToGetLine++;
-      if(this->whenToGetLine > 10) {
+      if(this->whenToGetLine > 8) {
         this->shortestPath+="\r\n";
         this->whenToGetLine = 0;
       }
