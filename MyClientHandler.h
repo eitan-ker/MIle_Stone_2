@@ -41,16 +41,14 @@ public:
             bufferString = bufferString + tempBuffer + "\n";
         }
         // send 1024 bites of buffer - info required is 328 bites
-        //solFlag = this->cm->doWeHaveSolution(bufferString);
+        solFlag = this->cm->doWeHaveSolution(bufferString);
         if (solFlag) { // if we have a solution in cache
             solution = this->cm->pop(bufferString); // we get the solution from cache
 
 
 
-
             // send solution to client
             is_sent = send(socket, solution.c_str(), strlen(solution.c_str()), 0);
-
 
 
 
