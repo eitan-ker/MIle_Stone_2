@@ -9,12 +9,16 @@
 #include "MyClientHandler.h"
 #include "OA.h"
 #include "AStar.h"
+#include "MyParallelServer.h"
+#include "MyParallelTester.h"
 using namespace std;
 int main() {
-  MySerialServer* s = new MySerialServer();
+  //  Server<string,string,Point>* s = new MySerialServer();
+    Server<string,string,Point>* s = new MyParallelServer();
+
   CacheManager<string, string>* cacheFile = new FileCacheManager<string, string>();
   Solver<string,string,Point>* solver = new OA<string,string,Point>(/*new AStar<string, string>()*/);
-  CLientHandler *c = new MyClientHandler<string,string,Point>(solver, cacheFile);
+  CLientHandler<string,string,Point> *c = new MyClientHandler<string,string,Point>(solver, cacheFile);
   s->open(8520, c);
     int sleeptime = 1200000000;
     try {
