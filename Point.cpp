@@ -4,16 +4,16 @@
 
 #include "Point.h"
 
-Point::Point(double r, double c) {
+Point::Point(int r, int c) {
     this->row = r;
     this->col = c;
 }
 
-double Point::getRow() {
+int Point::getRow() {
     return this->row;
 }
 
-double Point::getCol() {
+int Point::getCol() {
     return this->col;
 }
 

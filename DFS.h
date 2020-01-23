@@ -19,7 +19,7 @@ class DFS : public Searcher<T, Q, P> {
   vector<State<P>*> markedNodes;
   string shortestPath = "";
   int whenToGetLine;
-  double totalCost = 0;
+  int totalCost = 0;
  public:
   string getShortestPath() {
     return this->shortestPath;
@@ -49,7 +49,7 @@ class DFS : public Searcher<T, Q, P> {
       }
     }
   }
-  void WriteDirection(int decideDirection, double totalCost) {
+  void WriteDirection(int decideDirection, int totalCost) {
     string extra;
     switch (decideDirection) {
       case 1:

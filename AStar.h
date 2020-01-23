@@ -21,9 +21,9 @@ class AStar : public Searcher<T, Q, P> {
  private:
   std::priority_queue<State<P>*, vector<State<P>*>, CompareG<P>>  priorityQueue;
   std::set<State<P>*>  OpenList;
-  std::map<State<P>*,double> cameFrom;
+  std::map<State<P>*,int> cameFrom;
   stack<State<P>*> Selectedpath;
-  double totalCost;
+  int totalCost;
   string shortestPath = "";
   int whenToGetLine;
  public:
@@ -35,19 +35,19 @@ class AStar : public Searcher<T, Q, P> {
     this->whenToGetLine = 0;
   }
 
-  double calculateG(State<P> *state) {
-    typename std::map<State<P>*,double>::iterator it;
+  int calculateG(State<P> *state) {
+    typename std::map<State<P>*,int>::iterator it;
     it = cameFrom.find(state);
     if (it != cameFrom.end()) {
       return cameFrom[state];
     } else {
-      return std::numeric_limits<double>::infinity();
+      return std::numeric_limits<int>::max();
     }
   }
-  double calculateF(Searcheable<T, P>* searchable, State<P> *state) {
+  int calculateF(Searcheable<T, P>* searchable, State<P> *state) {
     return calculateG(state) + calculateH(searchable, state);
   }
-  double calculateH(Searcheable<T, P>* searcheable, State<P> *state) { // calculate H using Manhattan distance
+  int calculateH(Searcheable<T, P>* searcheable, State<P> *state) { // calculate H using Manhattan distance
     return abs(state->getState()->getRow() - searcheable->getGoalState()->getState()->getRow()) +
         abs(state->getState()->getCol() - searcheable->getGoalState()->getState()->getCol());
   }
@@ -73,7 +73,7 @@ class AStar : public Searcher<T, Q, P> {
       }
     }
   }
-  void WriteDirection(int decideDirection, double totalCost) {
+  void WriteDirection(int decideDirection, int totalCost) {
     string extra;
     switch (decideDirection) {
       case 1:
@@ -122,7 +122,7 @@ class AStar : public Searcher<T, Q, P> {
     State<P> *square;
     typename std::set<State<P> *>::iterator it6;
     typename std::vector<State<P> *>::iterator it;
-    double minCost = 0, minCost1 = 0;
+    int minCost = 0, minCost1 = 0;
     int i = 0, currentSquare = 0;
     OpenList.insert(searcheable->getInitialState());
     priorityQueue.push(searcheable->getInitialState());
@@ -144,7 +144,7 @@ class AStar : public Searcher<T, Q, P> {
       vector<State<P> *> successors = searcheable->getAllPossibleStates(square); // generate square's successors
         for (it = successors.begin(); it != successors.end(); ++it) {
           State<P> *successor = *it;
-          double tentative_gScore = calculateG(square) + (*it)->getCost();
+          int tentative_gScore = calculateG(square) + (*it)->getCost();
           if (tentative_gScore < calculateG(successor)) {
             this->cameFrom[successor] = tentative_gScore;
             successor->setG(tentative_gScore);

@@ -51,7 +51,7 @@ class BestFirstSearch : public Searcher<T, Q, P> {
       }
     }
   }
-  void WriteDirection(int decideDirection, double totalCost) {
+  void WriteDirection(int decideDirection, int totalCost) {
     string extra;
     switch (decideDirection) {
       case 1:

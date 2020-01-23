@@ -69,7 +69,7 @@ public:
                 std::cout << "Error sending message" << std::endl;
             }
             // solve with Solver
-           this->cm->save(bufferString, solver->solve(bufferString)); // save the probkem and solution
+            this->cm->save(bufferString,solver->solve(bufferString));
            cout<<"h"<<endl;
         }
     }

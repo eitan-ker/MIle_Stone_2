@@ -12,11 +12,11 @@ template<class P>
 class State {
 private :
     P *_state; // the state represented by point
-    double _cost; // cost to reach this state
-    double _totalCost;
+    int _cost; // cost to reach this state
+    int _totalCost;
     int is_visited;
-    double calculateG;
-    double calculateF;
+    int calculateG;
+    int calculateF;
     State<P> *_cameFrom; //the state we came from to this state
 public:
     State(P *state, double cost) {
@@ -25,8 +25,8 @@ public:
         this->_cameFrom = nullptr;
         this->is_visited = 0;
         this->_totalCost = 0;
-        this->calculateG =  std::numeric_limits<double>::infinity();
-        this->calculateF =  std::numeric_limits<double>::infinity();
+        this->calculateG =  std::numeric_limits<int>::max();
+        this->calculateF =  std::numeric_limits<int>::max();
     };
 
     void set_visited() {
@@ -42,7 +42,7 @@ public:
         this->settotalCost(this->getCost() + parent->gettotalCost());
     }
 
-    double getCost() {
+    int getCost() {
         return this->_cost;
     }
 
@@ -53,15 +53,15 @@ public:
       this->calculateF = 0;
       this->_totalCost = 0;
     }
-    double gettotalCost() {
+    int gettotalCost() {
         return this->_totalCost;
     }
 
-    void settotalCost(double val) {
+    void settotalCost(int val) {
         this->_totalCost += val;
     }
 
-    void setCost(double val) {
+    void setCost(int val) {
         this->_cost = val;
     }
 
@@ -76,16 +76,16 @@ public:
     State<P> *getCameFrom() {
         return this->_cameFrom;
     }
-    void setG(double val) {
+    void setG(int val) {
       this->calculateG = val;
     }
-    double getG() {
+    int getG() {
       return this->calculateG;
     }
-    void setF(double val) {
+    void setF(int val) {
       this->calculateF = val;
     }
-    double getF() {
+    int getF() {
       return this->calculateF;
     }
 };

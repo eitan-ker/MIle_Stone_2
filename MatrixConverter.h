@@ -18,6 +18,7 @@ private:
     vector<vector<State<P> *>> _matrix;
     State<P> *initalState;
     State<P> *goalState;
+
 public :
     // make matrix
     int countLength(string problem) {
@@ -136,8 +137,8 @@ public :
     vector<State<P> *> getAllPossibleStates(State<Point>* state) {
         int leftFlag = 0, rightFlag = 0, upFlag = 0, downFlag = 0;
         vector<State<P>*> possibleStates;
-        double positionRow = state->getState()->getRow();
-        double positionCol = state->getState()->getCol();
+        int positionRow = state->getState()->getRow();
+        int positionCol = state->getState()->getCol();
         int matrixSize = _matrix.size();
         if (positionRow > 0) {
           if(_matrix[positionRow - 1][positionCol]->getCost() != (-1)) {
