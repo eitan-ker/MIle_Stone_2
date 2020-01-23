@@ -13,12 +13,13 @@ class FileCacheManager : public CacheManager<T,Q> {
  public:
   FileCacheManager<T,Q>(){};
   int doWeHaveSolution(T problem) {
+    int hashCode = std::hash<std::string>()(problem);
     typename unordered_map<T, Q>::iterator it = this->getProblemQueryMap().begin();
     if (it != this->getProblemQueryMap().end()) {
       return 1;
     } else {
       try {
-        ifstream myfile1{problem + ".txt", ios::out};
+        ifstream myfile1{to_string(hashCode), ios::in};
         if (!myfile1) {
           return 0;
         }
