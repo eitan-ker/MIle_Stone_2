@@ -11,7 +11,7 @@
 #include "Solver.h"
 #include "CacheManager.h"
 template <class T, class Q, class P>
-class MyTestClientHandler : public CLientHandler {
+class MyTestClientHandler : public CLientHandler<string,string,Point> {
  private :
   Solver<T,Q,P>* solver;
   CacheManager<T,Q>* cm;
