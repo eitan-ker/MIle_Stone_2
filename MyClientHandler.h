@@ -41,14 +41,16 @@ public:
             bufferString = bufferString + tempBuffer + "\n";
         }
         // send 1024 bites of buffer - info required is 328 bites
-        solFlag = this->cm->doWeHaveSolution(bufferString);
+        //solFlag = this->cm->doWeHaveSolution(bufferString);
         if (solFlag) { // if we have a solution in cache
-
             solution = this->cm->pop(bufferString); // we get the solution from cache
+
+
 
 
             // send solution to client
             is_sent = send(socket, solution.c_str(), strlen(solution.c_str()), 0);
+
 
 
 
@@ -56,19 +58,19 @@ public:
                 std::cout << "Error sending message" << std::endl;
             }
         } else {
-
-            solution = this->solver->solve(bufferString);
-
+          //string so = this->cm->pop(bufferString); // we get the solution from cache
 
             // send solution to client
             is_sent = send(socket, solution.c_str(), strlen(solution.c_str()), 0);
+
 
 
             if (is_sent == -1) {
                 std::cout << "Error sending message" << std::endl;
             }
             // solve with Solver
-           this->cm->save(bufferString, solver->solve(bufferString)); // save the probkem and solution
+            this->cm->save(bufferString,solver->solve(bufferString));
+           cout<<"h"<<endl;
         }
     }
 

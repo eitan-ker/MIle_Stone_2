@@ -20,8 +20,9 @@ public:
     Q solve(T problem) {
         // State<T> state = new State<string>();
       Searcheable<T,P>* searcheable = new MatrixConverter<string,Point>(problem);
-    Searcher<T,Q,P>* a = new DFS<string,string,Point>();
+    Searcher<T,Q,P>* a = new AStar<string,string,Point>();
     string solution = a->search(searcheable);
+      cout<<"0"<<endl;
         return solution;
     }
 };

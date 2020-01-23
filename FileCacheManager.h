@@ -39,7 +39,10 @@ class FileCacheManager : public CacheManager<T,Q> {
       try {
         ifstream myfile1{to_string(hashCode), ios::in};
         if(myfile1.is_open()) {
-          myfile1 >> obj5;
+          while(!myfile1.eof()) {
+            getline(myfile1, obj5); //read number
+            cout << obj5 << endl; //print it out
+          }
         }
         myfile1.close();
         this->getProblemQueryMap().insert({problem,obj5});

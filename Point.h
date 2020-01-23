@@ -6,12 +6,12 @@
 #define MILE_STONE_2_POINT_H
 class Point {
 private:
-    double row;
-    double col;
+    int row;
+    int col;
 public:
-    Point(double r, double c);
-    double getCol();
-    double getRow();
+    Point(int r, int c);
+    int getCol();
+    int getRow();
     bool Equals(Point* p);
 };
 

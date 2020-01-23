@@ -16,7 +16,7 @@ int main() {
   Solver<string,string,Point>* solver = new OA<string,string,Point>(/*new AStar<string, string>()*/);
   CLientHandler *c = new MyClientHandler<string,string,Point>(solver, cacheFile);
   s->open(8520, c);
-    int sleeptime = 120000;
+    int sleeptime = 1200000000;
     try {
         std::this_thread::sleep_for(std::chrono::milliseconds(sleeptime));
     }
