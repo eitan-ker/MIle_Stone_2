@@ -18,7 +18,7 @@
 
 template <class T, class Q, class P>
 
-class MyClientHandler : public CLientHandler {
+class MyClientHandler : public CLientHandler<string,string,Point> {
 private :
     Solver<T, Q,P> *solver;
     CacheManager<T, Q> *cm;
@@ -32,16 +32,16 @@ public:
         int valread = read(socket, buffer, 1024);
         bufferString = buffer;
         temp = bufferString + ",";
-        bufferString = bufferString + "\n";
+        bufferString = bufferString/* + "\n"*/;
         soluLength = countLineLength(temp);
         int i = 0;
         for (i = 0; i < soluLength + 2; i++) {
             char tempBuffer[1024] = {0};
             int tempValRead = read(socket, tempBuffer, 1024);
-            bufferString = bufferString + tempBuffer + "\n";
+            bufferString = bufferString + tempBuffer/* + "\n"*/;
         }
         // send 1024 bites of buffer - info required is 328 bites
-        //solFlag = this->cm->doWeHaveSolution(bufferString);
+        solFlag = this->cm->doWeHaveSolution(bufferString);
         if (solFlag) { // if we have a solution in cache
             solution = this->cm->pop(bufferString); // we get the solution from cache
 
@@ -59,6 +59,7 @@ public:
             }
         } else {
           //string so = this->cm->pop(bufferString); // we get the solution from cache
+            solution = solver->solve(bufferString);
 
             // send solution to client
             is_sent = send(socket, solution.c_str(), strlen(solution.c_str()), 0);
@@ -69,8 +70,7 @@ public:
                 std::cout << "Error sending message" << std::endl;
             }
             // solve with Solver
-            this->cm->save(bufferString,solver->solve(bufferString));
-           cout<<"h"<<endl;
+            this->cm->save(bufferString,solution);
         }
     }
 
