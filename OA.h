@@ -26,10 +26,7 @@ public:
         string solution = a->search(searcheable);
         return solution;
     }
-	virtual ~OA() {
-		delete searcheable;
-		delete a;
-	}
+	virtual ~OA() {}
 };
 
 #endif //MILE_STONE2__OT_H_
