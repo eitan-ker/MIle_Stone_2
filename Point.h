@@ -13,7 +13,6 @@ public:
     int getCol();
     int getRow();
     bool Equals(Point* p);
-	virtual ~Point(){}
 };
 
 

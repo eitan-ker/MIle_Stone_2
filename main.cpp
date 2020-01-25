@@ -10,26 +10,25 @@
 #include "OA.h"
 #include "AStar.h"
 #include "MyParallelServer.h"
-#include "MyParallelTester.h"
-using namespace std;
-int main() {
-  //  Server<string,string,Point>* s = new MySerialServer();
-    Server<string,string,Point>* s = new MyParallelServer();
 
-  CacheManager<string, string>* cacheFile = new FileCacheManager<string, string>();
-  Solver<string,string,Point>* solver = new OA<string,string,Point>(/*new AStar<string, string>()*/);
-  CLientHandler<string,string,Point> *c = new MyClientHandler<string,string,Point>(solver, cacheFile);
-  s->open(8520, c);
-    int sleeptime = 1200000000;
+using namespace std;
+
+int main(int argc, char** argv) {
+
+    int portNum = stoi(argv[1]);
+
+    Server<string, string, Point> *s = new MyParallelServer();
+    CacheManager<string, string> *cacheFile = new FileCacheManager<string, string>();
+    Solver<string, string, Point> *solver = new OA<string, string, Point>();
+    CLientHandler<string, string, Point> *c = new MyClientHandler<string, string, Point>(solver, cacheFile);
+
+    s->open(portNum, c);
+    int sleeptime = 120000;
     try {
         std::this_thread::sleep_for(std::chrono::milliseconds(sleeptime));
-		delete cacheFile;
-		delete solver;
-		delete c;
-		delete s;
     }
     catch (...) {
         throw "there was a problem with sleep";
     }
-return 0;
+    return 0;
 }

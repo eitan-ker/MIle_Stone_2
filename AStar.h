@@ -52,10 +52,10 @@ class AStar : public Searcher<T, Q, P> {
         abs(state->getState()->getCol() - searcheable->getGoalState()->getState()->getCol());
   }
   int decideWhereICameFrom(State<P>* state) {/*return the direction we move from parent : 0-initial state,
- * 1-came to the left
- * 2-came to the right
- * 3-came down
- * 4-came up*/
+ * 1-move to the left
+ * 2-move to the right
+ * 3-move down
+ * 4-move up*/
     if (state->getCameFrom() == nullptr) {
       return 0;
     }
@@ -94,7 +94,7 @@ class AStar : public Searcher<T, Q, P> {
       default:break;
     }
   }
-  void addToSelectedpath(State<P>* state) { //fill the stack so that the initial state is on the top and goal state is at the bottom
+  void addToSelectedpath(State<P>* state) {
     if (state->getCameFrom()==nullptr) {
       this->Selectedpath.push(state);
       return;
@@ -157,7 +157,7 @@ class AStar : public Searcher<T, Q, P> {
           }
           }
         }
-    throw "Failed to find the Destination Cell\n"; //in case the goal state is not reachable
+    throw "Failed to find the Destination Cell\n";
   }
 };
 #endif //MILE_STONE2__ASTAR_H_
