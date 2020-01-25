@@ -1,12 +1,14 @@
 //
-// Created by eizzker on 13/01/2020.
+// Created by eizzker on 25/01/2020.
 //
 
 #include <thread>
 #include "MyParallelServer.h"
+#include "RunThread.h"
 
-void MyParallelServer::open(int port, CLientHandler<string,string,Point> *c) {
-    //  while (1) {
+void *socketThread(RunThread &run);
+
+void MyParallelServer::open(int port, CLientHandler<string, string, Point> *c) {
     int socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (socketfd == -1) {
         //error
@@ -26,43 +28,48 @@ void MyParallelServer::open(int port, CLientHandler<string,string,Point> *c) {
     if (bind(socketfd, (struct sockaddr *) &address, sizeof(address)) == -1) {
         std::cerr << "Could not bind the socket to an IP" << std::endl;
     }
-    //executeServer(c, address, socketfd);
-    thread ser(&MyParallelServer::executeServer, this, c, address, socketfd);
-    ser.detach();
-
-}
-
-void MyParallelServer::executeServer(CLientHandler<string,string,Point> *c, sockaddr_in address, int socketfd) {
-    //create socket
-
     if (listen(socketfd, 5) == -1) { //can also set to SOMAXCON (max connections)
         std::cerr << "Error during listening command" << std::endl;
         //    return -3;
     } else {
         std::cout << "Server is now listening ..." << std::endl;
     }
-    // time out
-    while (1) {
-        //making socket listen to the port
 
-        // accepting a client
-        int client_socket = accept(socketfd, (struct sockaddr *) &address,
-                                   (socklen_t *) &address);
-        if (client_socket == -1) {
-            std::cerr << "Error accepting client" << std::endl;
-            //  return -4;
+    auto t = [](int socketfd, sockaddr_storage storage, pthread_t temp_thr[60],
+                CLientHandler<string, string, Point> *c, MyParallelServer *ifRun) {
+        int i;
+        while (!ifRun->stopRunning) {
+            i = 0;
+            //Accept call creates a new socket for the incoming connection
+            socklen_t addrSize = sizeof storage;
+            int client_socket = accept(socketfd, (struct sockaddr *) &storage, &addrSize);
+            // using lamda func to run handle client
+            RunThread *run = new RunThread(c, client_socket);
+            //so the main thread can entertain next request
+            if (pthread_create(&temp_thr[i], NULL, reinterpret_cast<void *(*)(void *)>(socketThread),
+                               run) != 0)
+                printf("Failed to create thread\n");
+            if (i >= 50) {
+                i = 0;
+                while (i < 50) {
+                    pthread_join(temp_thr[i++], NULL);
+                }
+            }
         }
-        std::cout << "client is now connected" << std::endl;
-        thread thr(&MyParallelServer::runThread, this, c, client_socket);
-        thr.detach();
-    }
+    };
+    pthread_t thr[60];
+    sockaddr_storage storage;
+    std::thread thread_object(t, socketfd, storage, thr, c, this);
+    thread_object.detach();
 }
-
-void MyParallelServer::runThread(CLientHandler<string,string,Point> *c, int client_socket) {
-    c->handleClient(client_socket);
-}
-
 
 void MyParallelServer::stop() {
-    cout << "stop\n" << endl;
+    this->stopRunning = true;
+}
+
+void *socketThread(RunThread &run) {
+    run.getClientHandler()->handleClient(run.get_Client_Socket());
+    printf("Exit socketThread \n");
+    close(run.get_Client_Socket());
+    pthread_exit(NULL);
 }

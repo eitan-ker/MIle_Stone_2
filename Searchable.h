@@ -16,6 +16,5 @@ class Searcheable { // gets a problem - we decide how we want to get it(string, 
   virtual bool isGoalState(State<P>* state) = 0;
   virtual vector<State<P> *> getAllPossibleStates(State<P>* state) = 0;
   virtual void ResetMatrix() = 0;
-  virtual ~Searcheable(){}
 };
 #endif //MILE_STONE2__SEARCHABLE_H_

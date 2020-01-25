@@ -1,27 +1,28 @@
 //
-// Created by eizzker on 22/01/2020.
+// Created by eizzker on 25/01/2020.
 //
 
-#ifndef MILE_STONE_2_MYPARALLELSERVER_H
-#define MILE_STONE_2_MYPARALLELSERVER_H
+#ifndef MILE_STONE_2_MYPARALLELTESTER_H
+#define MILE_STONE_2_MYPARALLELTESTER_H
 
-#include <netinet/in.h>
 #include "Server.h"
-#include "Point.h"
+#include "FileCacheManager.h"
+#include <stdio.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <string>
 #include <iostream>
-
+#include <unistd.h>
+#include <netinet/in.h>
+#include "ClientHandler.h"
+#include "Point.h"
 using namespace std;
 
-class MyParallelServer : public Server<string,string,Point> {
+class MyParallelServer : public Server<string,string,Point>{
 public:
     void open(int port, CLientHandler<string,string,Point> *c); // open server with port num
-// listen until accept client, than execute ClientHandler
-    void executeServer(CLientHandler<string,string,Point> *c, sockaddr_in address, int socketfd);
-
-    void runThread(CLientHandler<string,string,Point> *c, int client_socket);
-
     void stop(); // close server
 };
 
 
-#endif //MILE_STONE_2_MYPARALLELSERVER_H
+#endif //MILE_STONE_2_MYPARALLELTESTER_H
