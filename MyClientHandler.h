@@ -13,6 +13,7 @@
 #include <sstream>
 #include "ClientHandler.h"
 #include "Solver.h"
+#include "Point.h"
 #include "CacheManager.h"
 
 

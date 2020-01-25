@@ -10,6 +10,8 @@
 #include <sstream>
 #include "CacheManager.h"
 #include "Solver.h"
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -26,7 +28,7 @@ public:
             return 1;
         } else {
             try {
-                ifstream myfile1{to_string(hashCode), ios::in};
+                std::ifstream myfile1{to_string(hashCode), ios::in};
                 if (!myfile1) {
                     return 0;
                 }
@@ -60,7 +62,7 @@ public:
             string res;
             std::vector<std::string> lines;
             try {
-                ifstream myfile1{to_string(hashCode), ios::in};
+                std::ifstream myfile1{to_string(hashCode), ios::in};
                 std::string line;
                 if (myfile1.is_open()) { //start getting string from file line by line
                     while (!myfile1.eof()) {
@@ -85,11 +87,10 @@ public:
         int hashCode = std::hash<std::string>()(problem);
         this->getProblemQueryMap()[problem] = solution; // save solution s to problem P in map
         try {
-            ofstream myfile{to_string(hashCode), ios::out | ios::trunc};
-            if (!myfile.is_open()) {
-                throw "cant open file";
+            std::ofstream myfile{to_string(hashCode), ios::out | ios::trunc};
+            if (myfile.is_open()) {
+               myfile << solution;
             }
-            myfile << solution;
             myfile.close();
         } catch (const char *e) {
             throw "error oppening file";
