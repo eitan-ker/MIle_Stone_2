@@ -77,7 +77,7 @@ public:
 
         while (curr->getCameFrom() != nullptr) {
             this->shortestPath = ", " + this->shortestPath;
-            int diraction = decideWhereICameFrom(curr);
+            diraction = decideWhereICameFrom(curr);
 
             if (curr->getCameFrom() == nullptr) {
                 WriteDirection(diraction, curr->getCost());

@@ -35,16 +35,16 @@ void MyParallelServer::open(int port, CLientHandler<string, string, Point> *c) {
         std::cout << "Server is now listening ..." << std::endl;
     }
 
-    auto t = [](int socketfd, sockaddr_storage storage, pthread_t temp_thr[60],
-                CLientHandler<string, string, Point> *c, MyParallelServer *ifRun) {
+    auto t = [](int _socketfd, sockaddr_storage storage, pthread_t temp_thr[60],
+                CLientHandler<string, string, Point> *_c, MyParallelServer *ifRun) {
         int i;
         while (!ifRun->stopRunning) {
             i = 0;
             //Accept call creates a new socket for the incoming connection
             socklen_t addrSize = sizeof storage;
-            int client_socket = accept(socketfd, (struct sockaddr *) &storage, &addrSize);
+            int client_socket = accept(_socketfd, (struct sockaddr *) &storage, &addrSize);
             // using lamda func to run handle client
-            RunThread *run = new RunThread(c, client_socket);
+            RunThread *run = new RunThread(_c, client_socket);
             //so the main thread can entertain next request
             if (pthread_create(&temp_thr[i], NULL, reinterpret_cast<void *(*)(void *)>(socketThread),
                                run) != 0)

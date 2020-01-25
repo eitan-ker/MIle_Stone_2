@@ -73,22 +73,22 @@ class AStar : public Searcher<T, Q, P> {
       }
     }
   }
-  void WriteDirection(int decideDirection, int totalCost) {
+  void WriteDirection(int decideDirection, int _totalCost) {
     string extra;
     switch (decideDirection) {
       case 1:
-        extra = "Left (" + to_string(totalCost) + ")";
+        extra = "Left (" + to_string(_totalCost) + ")";
         this->shortestPath+=extra;
         break;
       case 2 :
-        extra = "Right (" + to_string(totalCost) + ")";
+        extra = "Right (" + to_string(_totalCost) + ")";
         this->shortestPath+=extra;
         break;
       case 3 :
-        extra = "Down (" + to_string(totalCost) + ")";
+        extra = "Down (" + to_string(_totalCost) + ")";
         this->shortestPath+=extra;
         break;
-      case 4 :extra = "Up (" + to_string(totalCost) + ")";
+      case 4 :extra = "Up (" + to_string(_totalCost) + ")";
         this->shortestPath+=extra;
         break;
       default:break;
@@ -119,7 +119,7 @@ class AStar : public Searcher<T, Q, P> {
     }
   }
   Q search(Searcheable<T, P> *searcheable) { //based on Wikipedia A* algo
-    State<P> *square;
+    //State<P> *square;
     typename std::set<State<P> *>::iterator it6;
     typename std::vector<State<P> *>::iterator it;
     int minCost = 0, minCost1 = 0;
