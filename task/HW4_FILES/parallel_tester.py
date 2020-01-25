@@ -15,8 +15,8 @@ def connect_clients():
         clients.append(client)
     for i in range(3):
         clients[i].connect((IP, PORT))
-        print "client " + str(i + 1) + " connected to server"
-    print ""
+        print ("client " + str(i + 1) + " connected to server")
+    print ("")
     for i in range(3):
         t = threading.Thread(target=send_and_receive, args=(clients[i], i))
         t.start()
@@ -31,9 +31,9 @@ def send_and_receive(client, i):
         time.sleep(SLEEP_TIME)
    # print "client " + str(i + 1) + " sent to server"
     receive_message = client.recv(BUFFER_SIZE).decode('ASCII')
-    print "client " + str(i + 1) + " received:"
-    print receive_message
-    print ""
+    print ("client " + str(i + 1) + " received:")
+    print (receive_message)
+    print ("")
     client.close()
 
 
