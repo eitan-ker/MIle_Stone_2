@@ -49,22 +49,22 @@ class DFS : public Searcher<T, Q, P> {
       }
     }
   }
-  void WriteDirection(int decideDirection, int totalCost) {
+  void WriteDirection(int decideDirection, int _totalCost) {
     string extra;
     switch (decideDirection) {
       case 1:
-        extra = "Left (" + to_string(totalCost) + ")";
+        extra = "Left (" + to_string(_totalCost) + ")";
         this->shortestPath+=extra;
         break;
       case 2 :
-        extra = "Right (" + to_string(totalCost) + ")";
+        extra = "Right (" + to_string(_totalCost) + ")";
         this->shortestPath+=extra;
         break;
       case 3 :
-        extra = "Down (" + to_string(totalCost) + ")";
+        extra = "Down (" + to_string(_totalCost) + ")";
         this->shortestPath+=extra;
         break;
-      case 4 :extra = "Up (" + to_string(totalCost) + ")";
+      case 4 :extra = "Up (" + to_string(_totalCost) + ")";
         this->shortestPath+=extra;
         break;
       default:break;
