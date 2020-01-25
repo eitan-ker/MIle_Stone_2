@@ -3,21 +3,21 @@ import time
 import threading
 
 IP = 'localhost'
-PORT = 8520
+PORT = 5600
 SLEEP_TIME = 0.1
 BUFFER_SIZE = 2048
 
 
 def connect_clients():
     clients = []
-    for i in range(3):
+    for i in range(2):
         client = socket.socket()
         clients.append(client)
-    for i in range(3):
+    for i in range(2):
         clients[i].connect((IP, PORT))
         print ("client " + str(i + 1) + " connected to server")
     print ("")
-    for i in range(3):
+    for i in range(2):
         t = threading.Thread(target=send_and_receive, args=(clients[i], i))
         t.start()
 

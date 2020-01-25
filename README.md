@@ -10,9 +10,15 @@ Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 Prerequisites
-all files from git
+OS Linux Ubuntu
+files from git
 matrices that will be representing problem
 attached python code to run on terminal
+How to Run Code:
+1.move all the files to a Project in C-lion except for the contents of folder "task" 
+2.run the project - wait for message "server is now connected"
+3.navigate to "task\HW4_Files" folder and open terminal inside the folder. write "python3 parallel_tester"
+4.now you can see all the solutions for matrices in output of lion and in files named after the hash code of the specific matrix's content
 
 Built With
 Clion IDE

@@ -162,6 +162,7 @@ public :
         }
         return possibleStates;
     }
+	virtual ~MatrixConverter(){}
 };
 
 

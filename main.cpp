@@ -23,6 +23,10 @@ int main() {
     int sleeptime = 1200000000;
     try {
         std::this_thread::sleep_for(std::chrono::milliseconds(sleeptime));
+		delete cacheFile;
+		delete solver;
+		delete c;
+		delete s;
     }
     catch (...) {
         throw "there was a problem with sleep";
