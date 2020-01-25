@@ -6,10 +6,20 @@
 #define MILE_STONE_2_MYTESTCLIENTHANDLER_H
 
 #include <cstring>
+#include <iostream>
 #include <unistd.h>
 #include "ClientHandler.h"
 #include "Solver.h"
 #include "CacheManager.h"
+#include "Point.h"
+#include <sys/socket.h>
+#include <vector>
+#include <sstream>
+#include "ClientHandler.h"
+
+
+
+
 template <class T, class Q, class P>
 class MyTestClientHandler : public CLientHandler<string,string,Point> {
  private :
