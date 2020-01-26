@@ -15,7 +15,10 @@ using namespace std;
 
 int main(int argc, char** argv) {
 
-    int portNum = stoi(argv[1]);
+  int portNum = 5600;
+  if(argc == 2) {
+    portNum = stoi(argv[1]);
+  }
 
     Server<string, string, Point> *s = new MyParallelServer();
     CacheManager<string, string> *cacheFile = new FileCacheManager<string, string>();

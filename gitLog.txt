@@ -1,0 +1,967 @@
+commit 631ae4953a059fffb9a90ebf73559e8364d3df3b
+Merge: eae5b34 4a08b8c
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sun Jan 26 01:05:46 2020 +0200
+
+    Merge pull request #38 from eitan-ker/eitan
+    
+    fixed shadow warnings
+
+commit 4a08b8c057bc7cb3c0ccecb42325b96544d45359
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Sun Jan 26 00:59:13 2020 +0200
+
+    fixed shadow warnings
+
+commit eae5b34f0a65763de10db7aa35b0e2c2f430795f
+Merge: 4d6a88c 863c59c
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sun Jan 26 00:23:30 2020 +0200
+
+    Merge pull request #37 from eitan-ker/meni
+    
+    fixed error that popped out during compilation using the command from…
+
+commit 863c59cdc3321bf42a7cf10bff6720fd2857f701
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sun Jan 26 00:21:07 2020 +0200
+
+    fixed error that popped out during compilation using the command from Piazza and also added the command to task folder
+
+commit 4d6a88cdf703406bcb247d8bfda612e047ad3e93
+Merge: f935de8 9f34878
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sat Jan 25 23:14:40 2020 +0200
+
+    Merge pull request #36 from eitan-ker/eitan
+    
+    Mile Stone 2 is working.
+
+commit 9f3487870c777edd188b6c7066f02edf888807e0
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Sat Jan 25 23:10:32 2020 +0200
+
+    Mile Stone 2 is working.
+
+commit f935de814d7856736355c968d37d076672506f06
+Merge: a0efd82 2d365f7
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sat Jan 25 21:07:22 2020 +0200
+
+    Merge pull request #35 from eitan-ker/meni
+    
+    Meni
+
+commit 2d365f78bf506dd9c860f86655c4390dbd4111ff
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sat Jan 25 21:06:21 2020 +0200
+
+    added readme and matrices for testing
+
+commit a28a5fca5f409d83b1bdd2ef7eeb088e3753b0f6
+Merge: de49e58 102d228
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sat Jan 25 14:45:58 2020 +0200
+
+    fix conflict
+
+commit de49e58e8be0573889753130d0645aa0c3e3a61c
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sat Jan 25 14:42:30 2020 +0200
+
+    reset destroctor in OA
+
+commit 102d228245eb414bb83e15fa8f438ecca1b7e01a
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sat Jan 25 14:40:38 2020 +0200
+
+    Delete OA.h
+
+commit 1a68c1ae3e093a9658f9c121a5723d844f4cc5cf
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sat Jan 25 14:39:35 2020 +0200
+
+    added default destructors to some of the classes and comments
+
+commit a0efd82a3e1dadd644bbdb948e67e1efb50d22b4
+Merge: 8ddcef8 5a9f327
+Author: menimen <menash9288@gmail.com>
+Date:   Fri Jan 24 09:51:54 2020 +0200
+
+    Merge branch 'master' of https://github.com/eitan-ker/MIle_Stone        q
+    _1
+    
+    q
+    Lines starting with '#' will be ignored, and an empty message aborts
+
+commit 8ddcef8415ebf30d2187f704e1840ee529b806ec
+Author: menimen <menash9288@gmail.com>
+Date:   Fri Jan 24 09:51:37 2020 +0200
+
+    fixed graph
+
+commit 5a9f327d5f8ab9a355ca17a611ac25a1a83c76c0
+Merge: fb51b05 97f1fcf
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Fri Jan 24 09:34:10 2020 +0200
+
+    fixed conflict
+
+commit fb51b05cbf56143b147d22164b00902b312ae00f
+Merge: 499d67f ba0846e
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Fri Jan 24 09:31:58 2020 +0200
+
+    Merge branch 'master' of https://github.com/eitan-ker/MIle_Stone_2
+
+commit 499d67f2a2429483044d9981e943b79dff3fd6bc
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Fri Jan 24 09:31:22 2020 +0200
+
+    fixed bug in pop function in FileManager
+
+commit 97f1fcff7e3a948a652c26d24a7b47aca923a039
+Merge: 5536527 ba0846e
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Fri Jan 24 00:54:52 2020 +0200
+
+    Merge branch 'master' into meni
+
+commit ba0846e95d2195a3b7a849160a729d310e09dfb9
+Author: menimen <menash9288@gmail.com>
+Date:   Fri Jan 24 00:50:26 2020 +0200
+
+    added the matrices used for ampiric test and complexity analysis
+
+commit 4b54035786f0ed8bd12b6145df58a3ad6022e3b8
+Author: menimen <menash9288@gmail.com>
+Date:   Fri Jan 24 00:48:00 2020 +0200
+
+    fixed report
+
+commit 553652759250a285c0a7820dca92668fa54677a3
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 23:33:45 2020 +0200
+
+     added matrices used for report
+
+commit 40e91f06503a564a7d4589afefe3b87df676b859
+Merge: 54e1b10 d247706
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 22:01:20 2020 +0200
+
+    solve conflict
+
+commit 54e1b10827ab7a3ef80c9754e8008c4b14d317fd
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 21:59:53 2020 +0200
+
+    added matrices
+
+commit d247706419e460f5d0d989a44e44a3670ea72304
+Merge: d76ff95 4983d54
+Author: menimen <menash9288@gmail.com>
+Date:   Thu Jan 23 17:30:54 2020 +0200
+
+    Merge branch 'master' of https://github.com/eitan-ker/MIle_Stone_1
+    
+    
+    i# Pl
+    
+    
+    
+    
+    
+    ommit.
+
+commit d76ff95c3f3638f366f39dc0bbe98620d2fb35e8
+Author: menimen <menash9288@gmail.com>
+Date:   Thu Jan 23 17:30:31 2020 +0200
+
+    modified readme
+
+commit 4983d54098017ada40683b708d5ab18a6b567ed9
+Merge: d6e0774 8224419
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 17:22:22 2020 +0200
+
+    Merge pull request #32 from eitan-ker/eitan
+    
+    added parallel server + txt matrix and python file for tests, also ma…
+
+commit 822441901b206673667e752be3bb6b24d9d3fab0
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Thu Jan 23 16:57:33 2020 +0200
+
+    added parallel server + txt matrix and python file for tests, also made changes in template logic in some classes
+
+commit d6e07740d075b347edbd1b42222be8c014f7dce0
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 15:30:44 2020 +0200
+
+    Create README.md
+
+commit 68b6959515a88331c863bb498f669e0fd4e7d5e0
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 14:53:57 2020 +0200
+
+    fixed bug in doWeHaveASolution function in FileCacheManager.h
+
+commit fcbb97a594c46eeea0786a81daf9da055b7cd14d
+Merge: 9e5326c 9031afa
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Thu Jan 23 14:11:17 2020 +0200
+
+    Merge pull request #31 from eitan-ker/meni
+    
+    Meni
+
+commit 9031afa325b296ce6eabaf39f4ab4c849f920577
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 14:09:35 2020 +0200
+
+    fixed low severity bug - the total cost in printed in double format instead of int
+
+commit 9e39dced800eb3136ea040709463d988cc2e83e2
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 13:17:23 2020 +0200
+
+    fixed bug in pop function FileCacheManager - loading only the first line of file with solution
+
+commit 980243d14202427a57798b93e6e9d6fa1440b680
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 12:54:01 2020 +0200
+
+    added experiment test results in PDF format
+
+commit 9c19a2ba01d1d06197251c865dc5235029c413cc
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 23 00:16:30 2020 +0200
+
+    added changes in sever files
+
+commit e7584ff02bf111de2b5fea5b9b2e81f6e7d4192a
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 23:37:01 2020 +0200
+
+    changed logic of A*
+
+commit 1df554101f96e5d155a0b0975baadfabc09af104
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 20:54:32 2020 +0200
+
+    added helper comparators for BestFirstSearch and A* algo's, also added pure virtual function for searchable
+
+commit 0e4222d62f79f71817607c7a4befa7a705bb9cbe
+Merge: ec97405 9e5326c
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 20:51:15 2020 +0200
+
+    Merge branch 'master' into meni
+
+commit 9e5326c1b8b98f7934a886d3b4b9e86443ef4b1e
+Merge: 3aa0f33 e9bd5ac
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 20:49:21 2020 +0200
+
+    Merge pull request #30 from eitan-ker/eitan
+    
+    BFS is now perfectly working
+
+commit ec97405b9748f522023e657ebd679668013d35bc
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 20:48:24 2020 +0200
+
+    added reset Matrix func and also modified matrixConverter CTR
+
+commit 09eb9331d678eb65ac1b7d70123f68ae947a34bc
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 20:41:42 2020 +0200
+
+    added DFS algo
+
+commit a25f6e27fc9c791beb0811d26c7a386ec1e88ee2
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 19:32:50 2020 +0200
+
+    changed logic of BestFirstSearch
+
+commit e9bd5ac3575707cc84f968db44f62d56ba8324c6
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Wed Jan 22 19:25:15 2020 +0200
+
+    BFS is now perfectly working
+
+commit 3aa0f336c98cc11c096bf0ff10a0b614d7614450
+Merge: 3873b49 0d11350
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 19:17:08 2020 +0200
+
+    Merge pull request #29 from eitan-ker/eitan
+    
+    added changes to state.h and BFS algo
+
+commit 3873b494caf7ebbd4f0ac58056e2d16c37e487fe
+Merge: ebd443e 4a84f7d
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Wed Jan 22 14:58:43 2020 +0200
+
+    Merge pull request #28 from eitan-ker/meni
+    
+    Meni
+
+commit 0d1135009ead5f360bb6eb995fba51e9d42d86c1
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Wed Jan 22 02:35:45 2020 +0200
+
+    added changes to state.h and BFS algo
+
+commit 4a84f7d7ae3739c538d3bc7857fdb492770c955d
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 01:34:58 2020 +0200
+
+    changed MyClientHandler and OA to keep quiet during algo testing, still they need modification
+
+commit 39b3235df274feeebf22f588d7bdcecb994087a7
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 01:33:37 2020 +0200
+
+    added comparator for BestFirstSearch to know which State is the minimum in priority queue
+
+commit 59264dbda33d1b3ae8dd28c6ff391d2698b3c794
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 01:32:18 2020 +0200
+
+    added some cosmetic changes to output in Astar algo
+
+commit 7c61540731343ca058a1d92e624b4f147de533bc
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 22 01:31:22 2020 +0200
+
+    added DFS algo
+
+commit ebd443ebfebbb660820a02a2ad7b1afae6167e4d
+Merge: c036f8d a21947f
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Wed Jan 22 00:09:11 2020 +0200
+
+    Merge pull request #27 from eitan-ker/meni
+    
+    fixed bug in setTotalcost function -current is not added with total c…
+
+commit a21947f2d7309c8610012156a4a75f062b9b91c7
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 23:29:35 2020 +0200
+
+    fixed bug in FileCacheManager.h
+
+commit 0572dbc86cdb8222f5420495c6ab802916fa6cda
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 23:26:33 2020 +0200
+
+    added BestFirstSearch algo
+
+commit 8c7ce33a284ee44990a0fed60300fa3d3f04ecbc
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 21:55:56 2020 +0200
+
+    fixed bug in setTotalcost function -current is not added with total cost of parent
+
+commit c036f8dcdc8fc5bbade9fafaf91b7d9c5a753ead
+Merge: 0332298 b719777
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 21:47:10 2020 +0200
+
+    Merge pull request #26 from eitan-ker/eitan
+    
+    state.h is now updated
+
+commit b719777add92a6ece6c373265a64c7e1babf6528
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Tue Jan 21 19:10:52 2020 +0200
+
+    state.h is now updated
+
+commit 033229802b78b8e6ccddd23fd7d16215d6966a17
+Merge: bf478fb 55eb14f
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Tue Jan 21 17:41:30 2020 +0200
+
+    Merge pull request #25 from eitan-ker/meni
+    
+    fixed bug in setCameFrom in State.h
+
+commit 55eb14f7f14a952868d25c279849255ee2f489f9
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 17:39:55 2020 +0200
+
+    fixed bug in setCameFrom in State.h
+
+commit bf478fb03d86affd16207552347dab58cc0adda6
+Merge: a1fcddd 6956e9b
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Tue Jan 21 17:18:47 2020 +0200
+
+    Merge pull request #24 from eitan-ker/meni
+    
+    added functionality for State
+
+commit 6956e9b4aa02e5488341eb0c6c435d83b04ad274
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 17:08:47 2020 +0200
+
+    added private members default values to CTR
+
+commit 310de8ce42122b2e5052536e48257afe0100235c
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 17:05:52 2020 +0200
+
+    added functionality for State
+
+commit a1fcddd4e255d115fca64c318e29f4459d435bca
+Merge: e43f8ae 75065f1
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Tue Jan 21 15:54:51 2020 +0200
+
+    Merge pull request #23 from eitan-ker/meni
+    
+    Meni
+
+commit 75065f1ec7ec883bc5484317224b6184a7525e43
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 14:42:00 2020 +0200
+
+    fixed output format in AStar algo
+
+commit 541f76559b2d90d866cd6fd31b38bc11b44d4d16
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 14:41:01 2020 +0200
+
+    changed logic of saving file - from now on - the name of the file will be the hashCode of the problem string
+
+commit 708c3a9424359d1a4e0e7087e059b018955dd392
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 02:21:06 2020 +0200
+
+    fixed AStar algo tou print the format just like matrix_test_result.txt form HW4 files folder
+
+commit b300e99fa2934aec3241061ff4f8a00392763713
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 01:46:37 2020 +0200
+
+    in function getAllPossibleStates, added case to avoid adding block cell to possible states vector
+
+commit 9b32b2f07fcd5c47717cd22eff01f38301ee1aae
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 21 01:45:09 2020 +0200
+
+    finished making Astar algo, also added updated matrix_test.txt file
+
+commit e43f8aeaa56e6301a15fe4cf7bedc55e673aba50
+Merge: f71e740 bd91945
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Mon Jan 20 21:51:40 2020 +0200
+
+    Merge pull request #22 from eitan-ker/meni
+    
+    fixed bugs and changed almost all classes design
+
+commit bd91945ebd984c0fd93a21daab9112fc0c382b25
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 20:33:24 2020 +0200
+
+    changed logic of State.h
+
+commit d74d14cc0753830519218df696e4b967828fd3ab
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 20:32:09 2020 +0200
+
+    changed logic of Searcher.h
+
+commit 9429d2e6d633e98193990b2f5246928ae66e269e
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 20:31:33 2020 +0200
+
+    changed logic of Searchable.h
+
+commit 5de50cd8bc03f9f177955e3a53de620979009490
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 20:30:54 2020 +0200
+
+    changed logic of Point including private memebers and functions
+
+commit af6f68e992946c2c2c12cbad5e08f1a7f1baaa56
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 20:29:52 2020 +0200
+
+    changed logic of OA.h
+
+commit bc094a611c0353e8f7b44be189c67c5cf51acccd
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 20:29:06 2020 +0200
+
+    changed logic of MatrixConverter.h
+
+commit 3bc9686c7bdc7bf8909da0a063627c9c05b937fd
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 20:27:36 2020 +0200
+
+    added backup for Astar algo, currently not working
+
+commit 215b355b01426a2f62a0c442dee391d27401b415
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 03:23:03 2020 +0200
+
+    fixed bugs and changed almost all classes design
+
+commit f71e7406485cff1df22c3f168a75e0666c1a1437
+Merge: 36990fb abfeb63
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 01:30:42 2020 +0200
+
+    Merge pull request #20 from eitan-ker/meni
+    
+    Meni
+
+commit abfeb6334cb8aec6070ae726014ac6a162e194b5
+Merge: bb2ef68 d5c294f
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 01:30:04 2020 +0200
+
+    fixed conflict
+
+commit bb2ef68352d639f2ce73088c777da5a7c8abb2e9
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 01:27:28 2020 +0200
+
+    turend function in Searchable pure virtual and fixed some of the bugs that came along afterwards, started turning the functions in Searcher pure virtual but saw a lot of bugs so ill deal with that later
+
+commit cbb27d7550ab9c06da6420265f8b76439e0092e4
+Merge: fe8a707 36990fb
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 00:31:21 2020 +0200
+
+    Resolved merge conflict by incorporating both suggestions.
+
+commit d5c294fe45d408de20f07f3cce941afc738c2fed
+Merge: fe8a707 36990fb
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 00:28:31 2020 +0200
+
+    Merge branch 'master' into meni
+
+commit 36990fbfa5cb882cbbeef99831565856e5c021d1
+Merge: ad3a9f2 17d70c7
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Mon Jan 20 00:25:05 2020 +0200
+
+    Merge pull request #21 from eitan-ker/eitan
+    
+    completed MatrixConverter functions
+
+commit 17d70c70637b0de3cccf7b18dff3238cbb0590af
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Sun Jan 19 23:55:49 2020 +0200
+
+    completed MatrixConverter functions
+
+commit fe8a7076c53728145d4d4c99d19e9dbc01951942
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 22:27:10 2020 +0200
+
+    fixed bug of extra , at the end of shortestpath string
+
+commit 2d803e332f5d0633a62ca79cc287f4c39e97c86c
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 22:22:20 2020 +0200
+
+    added helper function for State.h - getCameFrom state
+
+commit dcc1a4292071b4772c7acd75a310e27ef839a834
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 22:21:27 2020 +0200
+
+    changed logic of AStar algo
+
+commit ad3a9f2ddcb53d1a09c883cbae2b84ddc55bd108
+Merge: 9cbe0fe 7cb9c8a
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Sun Jan 19 20:06:25 2020 +0200
+
+    Merge pull request #19 from eitan-ker/meni
+    
+    added logic of AStar algo to deal with given searchable, added helper…
+
+commit 7cb9c8a27c98cd03d1bd060660919e62684c7423
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 19:47:14 2020 +0200
+
+    changed logic of Astar algo, also took function relevent for Astar algo from MatrixConverter back to Astar algo cpp, also changed functions parameters in searcher.h,searchable.h and MatrixConverter.h to pass object by ref and not by val
+
+commit 471a896411ad6dab8ec41ebc15a9ea523113ecb7
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 15:37:05 2020 +0200
+
+    fixed a bug in AStar algo
+
+commit 3797cfd92d6ab795f3609467d0e048db765b2ff0
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 15:16:35 2020 +0200
+
+    added logic of AStar algo to deal with given searchable, added helper function to State class, added non virtual  helper functions to Searchable class to help with AStar algo(maybe this is not the right place for them)
+
+commit 9cbe0fe552251a9322eba8e0c7e882d4e72b8d4b
+Merge: 451e1fe f16d8d9
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 11:59:09 2020 +0200
+
+    Merge pull request #18 from eitan-ker/eitan
+    
+    OK
+
+commit 451e1fe43ba2d46e61fd4bbb16541b830569189c
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 02:27:50 2020 +0200
+
+    Delete OT.h
+
+commit ca02cf2ac1cd9518737c7bb5d2cec4a7bcc07baa
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sun Jan 19 02:27:36 2020 +0200
+
+    Delete MatrixConverterNotGoodExample.h
+
+commit f16d8d9e76fe4c538539274678d42c04e55c3c08
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Sun Jan 19 00:21:30 2020 +0200
+
+    added Point calss - will be representing a state. matrix is working and initialized with point(in MatrixConverter) - not string
+
+commit 9ab99eedbc619ca99b69cd534486c543a47a4130
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Sat Jan 18 19:54:22 2020 +0200
+
+    matrix is now initialized
+
+commit cf5c7f48033f940328b6c2b5199e9877ecd51660
+Merge: 5e5e64c ba5b69e
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Sat Jan 18 18:25:48 2020 +0200
+
+    Merge pull request #17 from eitan-ker/meni
+    
+    added MatrixConverter test file to show you what went wrong in the or…
+
+commit ba5b69ecc856acd27b414e096520f60de086f8c4
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sat Jan 18 18:22:47 2020 +0200
+
+    added MatrixConverter test file to show you what went wrong in the original file. afterthat you can delete this file
+
+commit 5e5e64c326d2a04d90f95ca6109da4245cc75957
+Merge: b3c0ba0 52a57a7
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sat Jan 18 16:37:04 2020 +0200
+
+    Merge pull request #16 from eitan-ker/eitan
+    
+    one bug with inserting state into matrix[r][c]
+
+commit 52a57a7fe9e82de1d6c094bbe5737e59ed99b52f
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Sat Jan 18 16:33:20 2020 +0200
+
+    one bug with inserting state into matrix[r][c]
+
+commit b3c0ba0f60359f183045262c3ad1f97f7d5e1dbc
+Merge: 582fd57 7ea0570
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sat Jan 18 14:17:09 2020 +0200
+
+    Merge pull request #15 from eitan-ker/eitan
+    
+    need you to fix bugs so the matrix will be initialized
+
+commit 7ea057055f1c73653b4a714552c9e5ce4baea041
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Sat Jan 18 13:22:40 2020 +0200
+
+    need you to fix bugs so the matrix will be initialized
+
+commit 582fd57b2bbf8af54a9e3c485791b20548d6aa19
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sat Jan 18 11:13:10 2020 +0200
+
+    Delete CMakeLists.txt
+
+commit 1206b5d8643bfa55023982c7a1e541c85ae59fdc
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Sat Jan 18 11:12:52 2020 +0200
+
+    Delete StringReverser.cpp
+
+commit e34320acf1e89fb1567aea2d5970d8478e8aa78b
+Merge: ccd0535 7ba9a43
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Sat Jan 18 10:53:09 2020 +0200
+
+    Merge pull request #14 from eitan-ker/meni
+    
+    fixed bugs in infrstrature classes
+
+commit 7ba9a434755b7cfbb419bb5d9251922b2cfb2139
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Sat Jan 18 10:26:40 2020 +0200
+
+    fixed bugs in infrstrature classes
+
+commit ccd053577cefd8394deba0176dc6cb21a9eed1fa
+Merge: fd02972 d8fbb72
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Fri Jan 17 21:31:44 2020 +0200
+
+    Merge pull request #13 from eitan-ker/meni
+    
+    started assembling the infrastracture for part c according to Eli's v…
+
+commit d8fbb72aa42413e6d0ab6d38df8c74e7d2ac632c
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Fri Jan 17 21:24:29 2020 +0200
+
+    started assembling the infrastracture for part c according to Eli's videos
+
+commit fd0297241c1421dc5537ad32ff2547223d3e5b7b
+Merge: d5c88b3 cc10711
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Fri Jan 17 17:39:44 2020 +0200
+
+    Merge pull request #12 from eitan-ker/meni
+    
+    added HW4_Files from piazza
+
+commit cc10711aefaaf49fa1955a6ad16bfc188bc17aa7
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Fri Jan 17 17:39:05 2020 +0200
+
+    added HW4_Files from piazza
+
+commit d5c88b326a2a4ae19541ae7e4c9d0d9856b60fd8
+Merge: b6a1d28 08d3cc8
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Fri Jan 17 11:36:37 2020 +0200
+
+    Merge pull request #11 from eitan-ker/eitan
+    
+    part 2 is running perfectly - NOW part 3 yalla
+
+commit 08d3cc8ec1571558d71958ddd47cbac1875b5348
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Fri Jan 17 00:26:54 2020 +0200
+
+    part 2 is running perfectly - NOW part 3 yalla
+
+commit b6a1d283fbca43350a2c2431dcc50cb516457018
+Merge: 0a5e54d 3877cf2
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Fri Jan 17 00:16:53 2020 +0200
+
+    Merge pull request #10 from eitan-ker/meni
+    
+    added add to map in pop function in case of the sol is not in map
+
+commit 3877cf297395ec1f2be6c5db530a29dfb947b5fd
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Fri Jan 17 00:16:13 2020 +0200
+
+    added add to map in pop function in case of the sol is not in map
+
+commit 0a5e54d24a256da3830f72ba751a377614b7e934
+Merge: cc0e99b 712aa4f
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Fri Jan 17 00:10:35 2020 +0200
+
+    Merge pull request #9 from eitan-ker/meni
+    
+    fixed a bug in writing\reading proccess in pop\save functions
+
+commit 712aa4ff9eb7a531304003ae9baef561dbbb069b
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Fri Jan 17 00:08:39 2020 +0200
+
+    fixed a bug in writing\reading proccess in pop\save functions
+
+commit cc0e99ba0c087353b281e58bfdd6bb9fcbd139f5
+Merge: 7e959c5 ac3a82f
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Thu Jan 16 18:36:05 2020 +0200
+
+    Merge pull request #8 from eitan-ker/meni
+    
+    fixed bugs in FileCacheManger and deletel MytestClient.cpp because Ei…
+
+commit ac3a82f307e8ff68df2044cebe8b5dd15b154586
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 16 16:24:59 2020 +0200
+
+    fixed bugs in FileCacheManger and deletel MytestClient.cpp because Eitan requested
+
+commit 7e959c50ddf0bc248e7fa9c102a398e228dcbc5f
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Thu Jan 16 16:14:54 2020 +0200
+
+    Delete MyTestClientHandler.cpp
+
+commit 59f237419a164fec69bfa28299ac0d0c321b8202
+Merge: a8e7360 f0560a2
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Thu Jan 16 15:55:39 2020 +0200
+
+    Merge pull request #6 from eitan-ker/eitan
+    
+    OK
+
+commit a8e73602b504d0fe1df75fdfbaca0194fb176677
+Merge: 971bd1f a50a9c8
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Thu Jan 16 15:50:28 2020 +0200
+
+    Merge pull request #7 from eitan-ker/meni
+    
+    added support for save and pull solve from file system
+
+commit a50a9c848b6aa732df12a6db5843c310ef072045
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Thu Jan 16 15:04:16 2020 +0200
+
+    added support for save and pull solve from file system
+
+commit f0560a267768ddcfc33c9439c46d9f89aee3fd6c
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Thu Jan 16 14:56:35 2020 +0200
+
+    part 2 is working, starting part 3
+
+commit 66ff7752b3bc1d773c2cab0d20c5ce705690021a
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Thu Jan 16 13:00:23 2020 +0200
+
+    problems with thread in myserialserver.cpp
+
+commit 2de3f80f4a410932fea8e4d6792dfe07f49e8649
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Wed Jan 15 23:04:15 2020 +0200
+
+    now server is listening, we need to deal with threads + namespace
+
+commit 971bd1fb4e7605441c3c9c5946dddf8f1be244dd
+Merge: 7112855 2ed4814
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Wed Jan 15 21:07:11 2020 +0200
+
+    Merge pull request #5 from eitan-ker/meni
+    
+    fixed unfedined refernce error caused by FileCacheManager.cpp - the s…
+
+commit 71128551fedef34e20117258747f1f50f5915411
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Wed Jan 15 17:05:06 2020 +0200
+
+    Delete FileCacheManager.cpp
+    
+    moved everything to .h file
+
+commit 2ed4814b8601fed87555768d65fda1ea8f7f576a
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Wed Jan 15 17:03:03 2020 +0200
+
+    fixed unfedined refernce error caused by FileCacheManager.cpp - the solution was to remove the entire file and move the implementation to .h file. probably i dont know how to declare function in cpp file
+
+commit 02fc67c0ffcec9f3c58fca4cfb76a33169ddd714
+Merge: 55a78dd d304907
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Wed Jan 15 15:46:19 2020 +0200
+
+    Merge pull request #4 from eitan-ker/eitan
+    
+    ok
+
+commit d304907b16bb15f378145e260a209703758edbc1
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Wed Jan 15 15:31:10 2020 +0200
+
+    we have bug with Cmake - make sure it works on you comp
+
+commit 55a78ddb64a2d04a18db169b7450bcd0a1c34c54
+Merge: 77fc4a8 4bf70f3
+Author: eitan-ker <58944748+eitan-ker@users.noreply.github.com>
+Date:   Wed Jan 15 10:03:07 2020 +0200
+
+    Merge pull request #3 from eitan-ker/meni
+    
+    Meni
+
+commit 4bf70f3ec05d4f2af9b497f39745b4d329bac24f
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 14 23:29:56 2020 +0200
+
+    added return in solve func
+
+commit 8aa57f5bf13229c380ab71851ebb9175e070d6d0
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 14 23:29:13 2020 +0200
+
+    started working on CacheManger and created solve() function in StringRevereser class to return reversed string given as a parameter
+
+commit 77fc4a87cf0dd6c84ac34b3699858f2ddd16c50b
+Merge: d721185 3d01c0f
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Tue Jan 14 22:03:56 2020 +0200
+
+    Merge pull request #2 from eitan-ker/eitan
+    
+    ok
+
+commit 3d01c0f3e6384f4c295b8bc871d5455936fb874f
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Tue Jan 14 17:51:50 2020 +0200
+
+    started working MyTestClientHandler - chache manager and solver implementation are needed
+
+commit d72118518d9a53154ca78cc78546c380f206839d
+Merge: 97a1602 d44094d
+Author: Menahem Ashurov <meni.ashurov@gmail.com>
+Date:   Tue Jan 14 17:23:27 2020 +0200
+
+    Merge pull request #1 from eitan-ker/meni
+    
+    updated CacheManger
+
+commit d44094d45776f23d1684fcd78cc92290ce0f2aa3
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 14 17:22:39 2020 +0200
+
+    updated CacheManger
+
+commit 97a1602a241e08fb0f7aef620fdcdbf544e8e821
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 14 13:52:22 2020 +0200
+
+    made general fixes and updates to ClientHandler.h,MySerialServer.h and MyTestClientHandler.h
+
+commit 4e2a625056c980e33cb0991941948e11d8c46345
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Tue Jan 14 12:52:22 2020 +0200
+
+    delete ClientHandler object from Server.h. it was a mistake to do that. the ClientHandler is a parameter in open method and not composition
+
+commit 309fa48f5686a0ce6600d1e4f4a7b9466d91685a
+Author: menimen <meni.ashurov@gmail.com>
+Date:   Mon Jan 13 18:28:30 2020 +0200
+
+    added project files from piazza
+
+commit 34fa2d7bd71af8b24a8662a577bd4ec97ab3b1da
+Author: eitan-ker <eizzker@gmail.com>
+Date:   Mon Jan 13 18:03:24 2020 +0200
+
+    started project - after task A
