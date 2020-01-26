@@ -3,7 +3,7 @@ import time
 import threading
 
 IP = 'localhost'
-PORT = 8520
+PORT = 5600
 SLEEP_TIME = 0.1
 BUFFER_SIZE = 2048
 
