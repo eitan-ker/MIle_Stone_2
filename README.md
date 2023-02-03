@@ -13,14 +13,6 @@ These instructions will help you set up the project on your local machine for de
 - Matrices representing the problems (attached)
 - Python code to run in the terminal
 
-### How to Run the Code
-
-1. Move all the files to a project in CLion, excluding the contents of the "task" folder.
-2. Run the project and wait for the message "server is now connected".
-3. Navigate to the "task/HW4_Files" folder and open the terminal inside the folder.
-4. Run the command `python3 parallel_tester`.
-5. You can now see all the solutions for the matrices in the output of CLion and in files named after the hash code of the specific matrix's content.
-
 ## Built With
 
 - CLion IDE
