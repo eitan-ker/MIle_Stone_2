@@ -1,33 +1,38 @@
-# MIle_Stone_2
-mid semester assignment amid flight simulator project
+# Handling Requests from Multiple Clients
 
-link to git repo :https://github.com/eitan-ker/MIle_Stone_2
+This project, developed as part of the Advanced Programming course in the Sophomore year, focuses on handling requests from multiple clients with different problems and providing them with solutions from the cache or local disk file. It practices problem-solving and the use of appropriate design patterns to solve the problem, using the Bridge design pattern.
 
-project given in c++ in "Advanced_programming" course in Sophmore year. the project is about learning how to handle requests from multiple clients with differents problems in order to bring them solution for their problem either from Cache or from file on local disk.
-this project practices design the problem and using appropriate design pattern to solve the problem. the code is based on bridge design pattern
+## Getting Started
 
-Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will help you set up the project on your local machine for development and testing purposes.
 
-Prerequisites
-OS Linux Ubuntu
-files from git
-matrices that will be representing problem
-attached python code to run on terminal
-How to Run Code:
-1.move all the files to a Project in C-lion except for the contents of folder "task" 
-2.run the project - wait for message "server is now connected"
-3.navigate to "task\HW4_Files" folder and open terminal inside the folder. write "python3 parallel_tester"
-4.now you can see all the solutions for matrices in output of lion and in files named after the hash code of the specific matrix's content
+### Prerequisites
 
-Built With
-Clion IDE
+- Operating System: Linux Ubuntu
+- Git repository files
+- Matrices representing the problems (attached)
+- Python code to run in the terminal
 
-Authors
-Eitan ker, Meni Ashurov
+### How to Run the Code
 
-license
-This project is licensed under the Bar-Ilan University license
+1. Move all the files to a project in CLion, excluding the contents of the "task" folder.
+2. Run the project and wait for the message "server is now connected".
+3. Navigate to the "task/HW4_Files" folder and open the terminal inside the folder.
+4. Run the command `python3 parallel_tester`.
+5. You can now see all the solutions for the matrices in the output of CLion and in files named after the hash code of the specific matrix's content.
 
-Acknowledgments
-stackoverflow which inspired where we encountered a problem in code and used code from there
+## Built With
+
+- CLion IDE
+
+## Authors
+
+Eitan Ker, Meni Ashurov
+
+## License
+
+This project is licensed under the Bar-Ilan University license.
+
+## Acknowledgments
+
+We would like to acknowledge StackOverflow, which inspired us when encountering a problem in the code and using code from there.
